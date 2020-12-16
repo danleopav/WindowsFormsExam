@@ -75,6 +75,7 @@ namespace WindowsFormsRealEstateAdmin
             this.buttonManageApartments.Size = new System.Drawing.Size(182, 133);
             this.buttonManageApartments.TabIndex = 8;
             this.buttonManageApartments.UseVisualStyleBackColor = true;
+            this.buttonManageApartments.Click += new System.EventHandler(this.buttonManageApartments_Click);
             // 
             // buttonManageClients
             // 
@@ -86,7 +87,7 @@ namespace WindowsFormsRealEstateAdmin
             this.buttonManageClients.UseVisualStyleBackColor = true;
             this.buttonManageClients.Click += new System.EventHandler(this.buttonManageClients_Click);
             // 
-            // Form1
+            // FormPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -97,7 +98,7 @@ namespace WindowsFormsRealEstateAdmin
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "FormPanel";
             this.Text = "Admin";
             this.ResumeLayout(false);
             this.PerformLayout();

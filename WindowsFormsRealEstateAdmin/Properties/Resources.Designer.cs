@@ -63,9 +63,9 @@ namespace WindowsFormsRealEstateAdmin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add {
+        internal static System.Drawing.Bitmap apartment {
             get {
-                object obj = ResourceManager.GetObject("add", resourceCulture);
+                object obj = ResourceManager.GetObject("apartment", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace WindowsFormsRealEstateAdmin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap apartment {
+        internal static System.Drawing.Bitmap manage {
             get {
-                object obj = ResourceManager.GetObject("apartment", resourceCulture);
+                object obj = ResourceManager.GetObject("manage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
