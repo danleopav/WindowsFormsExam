@@ -34,7 +34,7 @@ namespace WindowsFormsRealEstateAdmin
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonManageApartments = new System.Windows.Forms.Button();
-            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonAdministration = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -45,7 +45,7 @@ namespace WindowsFormsRealEstateAdmin
             this.groupBox1.Size = new System.Drawing.Size(200, 163);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Manage apartment";
+            this.groupBox1.Text = "Create";
             // 
             // groupBox2
             // 
@@ -76,15 +76,15 @@ namespace WindowsFormsRealEstateAdmin
             this.buttonManageApartments.TabIndex = 12;
             this.buttonManageApartments.UseVisualStyleBackColor = true;
             // 
-            // buttonAdd
+            // buttonAdministration
             // 
-            this.buttonAdd.Image = global::WindowsFormsRealEstateAdmin.Properties.Resources.manage;
-            this.buttonAdd.Location = new System.Drawing.Point(32, 88);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(182, 133);
-            this.buttonAdd.TabIndex = 11;
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonAdministration.Image = global::WindowsFormsRealEstateAdmin.Properties.Resources._new;
+            this.buttonAdministration.Location = new System.Drawing.Point(32, 88);
+            this.buttonAdministration.Name = "buttonAdministration";
+            this.buttonAdministration.Size = new System.Drawing.Size(182, 133);
+            this.buttonAdministration.TabIndex = 11;
+            this.buttonAdministration.UseVisualStyleBackColor = true;
+            this.buttonAdministration.Click += new System.EventHandler(this.buttonAdministration_Click);
             // 
             // FormApartmentManager
             // 
@@ -92,13 +92,13 @@ namespace WindowsFormsRealEstateAdmin
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 242);
             this.Controls.Add(this.buttonManageApartments);
-            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.buttonAdministration);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormApartmentManager";
-            this.Text = "FormApartmentManager";
+            this.Text = "Apartment manager";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,7 +107,7 @@ namespace WindowsFormsRealEstateAdmin
         #endregion
 
         private System.Windows.Forms.Button buttonManageApartments;
-        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonAdministration;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;

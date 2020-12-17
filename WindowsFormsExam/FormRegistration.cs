@@ -110,25 +110,11 @@ namespace WindowsFormsExam
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 profilePhoto = Image.FromFile(ofd.FileName);
-                profilePhoto = ResizeImage(profilePhoto);
+                profilePhoto = ImageManip.ResizeImage(profilePhoto, new Size(200,220));
             }
 
-            profilePhotoByteArr = ImageToByteArr(profilePhoto);
-            pictureBoxProfilePhoto.Image = profilePhoto;
+            profilePhotoByteArr = ImageManip.ImageToByteArray(profilePhoto);
+            pictureBoxProfilePhoto.Image = profilePhoto;  
         }
-
-        Image ResizeImage(Image img)
-        {
-            return new Bitmap(img, new Size(200, 220));
-        }
-
-        byte[] ImageToByteArr(Image img)
-        {
-            ImageConverter converter = new ImageConverter();
-            byte[] imgArr = (byte[])converter.ConvertTo(img, typeof(byte[]));
-
-            return imgArr;
-        }
-
     }
 }

@@ -21,5 +21,6 @@ namespace WindowsFormsExam
         public DateTime DateOfBirth { get; set; } = DateTime.Today;
         public bool RentingNow { get; set; }
         public byte[] ProfilePhoto { get; set; }
+        public Apartment Apartment { get; set; } 
     }
 }

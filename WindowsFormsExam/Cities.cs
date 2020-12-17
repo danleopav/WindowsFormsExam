@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsExam.Admin
+namespace WindowsFormsExam
 {
-    enum Cities
+    public enum Cities
     {
         Kyiv, 
         Lviv,

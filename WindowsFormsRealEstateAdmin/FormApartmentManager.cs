@@ -17,9 +17,11 @@ namespace WindowsFormsRealEstateAdmin
             InitializeComponent();
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void buttonAdministration_Click(object sender, EventArgs e)
         {
-                    
+            FormApartmentCreator apartmentCreator = new FormApartmentCreator();
+            apartmentCreator.ShowDialog();
         }
     }
 }
+                                                                                                                   

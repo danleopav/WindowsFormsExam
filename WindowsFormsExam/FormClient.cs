@@ -20,14 +20,7 @@ namespace WindowsFormsExam
             InitializeComponent();
             client = c;
             labelWelcome.Text = "Welcome, " + client.FirstName;
-            pictureBoxProfilePhoto.Image = ByteToImage(client.ProfilePhoto);
-        }
-
-        Image ByteToImage(byte[] arr)
-        {
-            MemoryStream ms = new MemoryStream(arr);
-            Image img = Image.FromStream(ms);
-            return img;
+            pictureBoxProfilePhoto.Image = ImageManip.ByteArrayToImage(client.ProfilePhoto);
         }
 
         private void buttonFind_Click(object sender, EventArgs e)
