@@ -43,8 +43,8 @@ namespace WindowsFormsRealEstateAdmin
             numericUpDownFloor.Value = apartment.Floor;
             numericUpDownRooms.Value = apartment.Rooms;
             textBoxDescription.Text = apartment.Description;
-            photoSlider = ImageManip.ByteArrToPhotoSlider(apartment.PhotoSlider);
 
+            photoSlider = ImageManip.ByteArrToPhotoSlider(apartment.PhotoSlider);
             pictureBoxSlider.Image = ImageManip.ByteArrayToImage(photoSlider[photoNumber]);
         }
 

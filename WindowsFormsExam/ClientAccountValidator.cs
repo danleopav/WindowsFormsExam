@@ -12,6 +12,11 @@ namespace WindowsFormsExam
     {
         public static bool CheckUsername(string username, DbSet<Client> clients)
         {
+            if (clients.Count() == 0)
+            {
+                return false;
+            }
+
             foreach(var client in clients)
             {
                 if (client.Username == username)
@@ -61,6 +66,18 @@ namespace WindowsFormsExam
             {
                 return false;
             }
+        }
+
+        public static Client FindClient(string username, DbSet<Client> clients)
+        {
+            foreach (var client in clients)
+            {
+                if (client.Username == username)
+                {
+                    return client;
+                }
+            }
+            return null;
         }
     }
 }

@@ -16,20 +16,20 @@ namespace WindowsFormsExam
         Client client;
         byte[] profilePhotoByteArr;
 
-        public FormProfileSetup(Client c)
+        public FormProfileSetup(Client client)
         {
             InitializeComponent();
 
-            textBoxFirstName.Text = c.FirstName;
-            textBoxLastName.Text = c.LastName;
-            textBoxUsername.Text = c.Username;
-            textBoxPassword.Text = c.Password;
-            textBoxEmail.Text = c.Email;
-            dateTimePickerDateOfBirth.Value = c.DateOfBirth;
+            this.client = client; 
 
-            Image img = ImageManip.ByteArrayToImage(c.ProfilePhoto);
-            img = ImageManip.ResizeImage(img, new Size(200, 220));
-            pictureBoxProfilePhoto.Image = img;
+            textBoxFirstName.Text = client.FirstName;
+            textBoxLastName.Text = client.LastName;
+            textBoxUsername.Text = client.Username;
+            textBoxPassword.Text = client.Password;
+            textBoxEmail.Text = client.Email;
+            dateTimePickerDateOfBirth.Value = client.DateOfBirth;
+            profilePhotoByteArr = client.ProfilePhoto;
+            pictureBoxProfilePhoto.Image = ImageManip.ByteArrayToImage(client.ProfilePhoto);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -60,12 +60,15 @@ namespace WindowsFormsExam
                 return;
             }
 
-            if (ClientAccountValidator.CheckEmail(textBoxEmail.Text, db.Clients))
+            if (client.Email != textBoxEmail.Text)
             {
-                MessageBox.Show("Inputed e-mail currently being used by other user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (ClientAccountValidator.CheckEmail(textBoxEmail.Text, db.Clients))
+                {
+                    MessageBox.Show("Inputed e-mail currently being used by other user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
-
+            
             client.Username = textBoxUsername.Text;
             client.Password = textBoxPassword.Text;
             client.FirstName = textBoxFirstName.Text;
@@ -83,18 +86,9 @@ namespace WindowsFormsExam
                 return;
             }
 
-            client.ProfilePhoto = profilePhotoByteArr; 
+            client.ProfilePhoto = profilePhotoByteArr;
 
             db.SaveChanges();
-
-            textBoxUsername.Text = String.Empty;
-            textBoxPassword.Text = String.Empty;
-            textBoxFirstName.Text = String.Empty;
-            textBoxLastName.Text = String.Empty;
-            textBoxEmail.Text = String.Empty;
-            profilePhotoByteArr = null;
-            pictureBoxProfilePhoto.Image = null;
-            dateTimePickerDateOfBirth.Value = DateTime.Today;
         }
 
         private void buttonAddProfilePhoto_Click(object sender, EventArgs e)

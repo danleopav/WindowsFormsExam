@@ -38,6 +38,9 @@ namespace WindowsFormsRealEstateAdmin
             apartments.Remove(apartment);
             db.Apartments.Remove(apartment);
             db.SaveChanges();
+
+            listBoxRealEstate.DataSource = null;
+            listBoxRealEstate.DataSource = db.Apartments.ToList();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)

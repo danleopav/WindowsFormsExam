@@ -26,7 +26,7 @@ namespace WindowsFormsExam
                 db.Clients.Add(new Client()
                 {
                     Username = "admin",
-                    FirstName = "admin"
+                    FullName = "admin"
                 });
                 db.SaveChanges();
             }
@@ -34,6 +34,9 @@ namespace WindowsFormsExam
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            db.Dispose();
+            db = new RealEstateContext();
+
             if (!ClientAccountValidator.CheckUsername(textBoxUsername.Text, db.Clients))
             {
                 MessageBox.Show("Incorrect username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -43,7 +46,7 @@ namespace WindowsFormsExam
 
             if (ClientAccountValidator.CheckUsername(textBoxUsername.Text, db.Clients) && ClientAccountValidator.CheckPassword(textBoxPassword.Text, db.Clients))
             {
-                Client client = FindClient(textBoxUsername.Text);
+                Client client = ClientAccountValidator.FindClient(textBoxUsername.Text, db.Clients);
 
                 textBoxUsername.Text = String.Empty;
                 textBoxPassword.Text = String.Empty;
@@ -51,19 +54,6 @@ namespace WindowsFormsExam
                 FormClient formClient = new FormClient(client);
                 formClient.ShowDialog();
             }
-        }
-
-
-        Client FindClient(string username)
-        {
-            foreach (var client in db.Clients)
-            {
-                if (client.Username == username)
-                {
-                    return client;
-                }
-            }
-            return null;
         }
 
         private void buttonEye_Click(object sender, EventArgs e)

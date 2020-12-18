@@ -28,6 +28,13 @@ namespace WindowsFormsRealEstateAdmin
         private void buttonBan_Click(object sender, EventArgs e)
         {
             Client client = listBoxClients.SelectedItem as Client;
+
+            if (client.Username == "admin")
+            {
+                MessageBox.Show("You cant ban admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (client != null)
             {
                 db.Clients.Remove(client);

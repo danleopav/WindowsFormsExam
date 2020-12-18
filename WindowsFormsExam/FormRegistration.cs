@@ -74,8 +74,12 @@ namespace WindowsFormsExam
                 return;
             }
 
-
             if (profilePhotoByteArr == null)
+            {
+                MessageBox.Show("Select profile photo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (profilePhotoByteArr.GetUpperBound(0) < 1)
             {
                 MessageBox.Show("Select profile photo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

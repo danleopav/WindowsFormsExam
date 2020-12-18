@@ -52,6 +52,11 @@ namespace WindowsFormsExam
             {
                 return;
             }
+            if (photoSlider == null)
+            {
+                return;
+            }
+
             photoNumber++;
             labelPhotoNumber.Text = $"{photoNumber + 1}/5";
 
@@ -73,6 +78,11 @@ namespace WindowsFormsExam
             {
                 return;
             }
+            if (photoSlider == null)
+            {
+                return;
+            }
+
             photoNumber--;
             labelPhotoNumber.Text = $"{photoNumber + 1}/5";
 
