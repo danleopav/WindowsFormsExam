@@ -7,21 +7,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsExam;
 
 namespace WindowsFormsRealEstateAdmin
 {
     public partial class FormApartmentManager : Form
     {
+        RealEstateContext db = new RealEstateContext();
+        List<Apartment> apartments;
+
         public FormApartmentManager()
         {
             InitializeComponent();
+            apartments = db.Apartments.ToList();
+
+            listBoxRealEstate.DataSource = apartments;
+            listBoxRealEstate.DisplayMember = "Street";
+            listBoxRealEstate.ValueMember = "Id";
         }
 
-        private void buttonAdministration_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
-            FormApartmentCreator apartmentCreator = new FormApartmentCreator();
-            apartmentCreator.ShowDialog();
+            FormApartmentCreator apartmentManager = new FormApartmentCreator();
+            apartmentManager.ShowDialog();
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            Apartment apartment = listBoxRealEstate.SelectedItem as Apartment;
+            apartments.Remove(apartment);
+            db.Apartments.Remove(apartment);
+            db.SaveChanges();
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            Apartment apartment = listBoxRealEstate.SelectedItem as Apartment;
+            FormApartmentEditor apartmentEditor = new FormApartmentEditor(apartment);
+            apartmentEditor.ShowDialog();
         }
     }
 }
-                                                                                                                   

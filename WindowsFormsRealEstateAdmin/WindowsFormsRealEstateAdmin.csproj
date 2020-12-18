@@ -56,11 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApartmentAdministration.cs">
+    <Compile Include="FormApartmentManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApartmentAdministration.Designer.cs">
-      <DependentUpon>ApartmentAdministration.cs</DependentUpon>
+    <Compile Include="FormApartmentManager.Designer.cs">
+      <DependentUpon>FormApartmentManager.cs</DependentUpon>
     </Compile>
     <Compile Include="FormApartmentCreator.cs">
       <SubType>Form</SubType>
@@ -68,17 +68,17 @@
     <Compile Include="FormApartmentCreator.Designer.cs">
       <DependentUpon>FormApartmentCreator.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormApartmentManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormApartmentManager.Designer.cs">
-      <DependentUpon>FormApartmentManager.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormClientManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormClientManager.Designer.cs">
       <DependentUpon>FormClientManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormApartmentEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormApartmentEditor.Designer.cs">
+      <DependentUpon>FormApartmentEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPanel.cs">
       <SubType>Form</SubType>
@@ -88,17 +88,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ApartmentAdministration.resx">
-      <DependentUpon>ApartmentAdministration.cs</DependentUpon>
+    <EmbeddedResource Include="FormApartmentManager.resx">
+      <DependentUpon>FormApartmentManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormApartmentCreator.resx">
       <DependentUpon>FormApartmentCreator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormApartmentManager.resx">
-      <DependentUpon>FormApartmentManager.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormClientManager.resx">
       <DependentUpon>FormClientManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormApartmentEditor.resx">
+      <DependentUpon>FormApartmentEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPanel.resx">
       <DependentUpon>FormPanel.cs</DependentUpon>

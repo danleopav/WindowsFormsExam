@@ -44,10 +44,13 @@ namespace WindowsFormsRealEstateAdmin
             this.buttonPrev = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.labelPhotoNumber = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDownFloor = new System.Windows.Forms.NumericUpDown();
             this.buttonAddPhoto = new System.Windows.Forms.Button();
             this.pictureBoxSlider = new System.Windows.Forms.PictureBox();
-            this.labelPhotoNumber = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRooms)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,7 +122,7 @@ namespace WindowsFormsRealEstateAdmin
             // numericUpDownRooms
             // 
             this.numericUpDownRooms.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownRooms.Location = new System.Drawing.Point(24, 326);
+            this.numericUpDownRooms.Location = new System.Drawing.Point(24, 314);
             this.numericUpDownRooms.Name = "numericUpDownRooms";
             this.numericUpDownRooms.Size = new System.Drawing.Size(190, 33);
             this.numericUpDownRooms.TabIndex = 10;
@@ -128,7 +131,7 @@ namespace WindowsFormsRealEstateAdmin
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(21, 305);
+            this.label5.Location = new System.Drawing.Point(21, 293);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 18);
             this.label5.TabIndex = 11;
@@ -136,7 +139,7 @@ namespace WindowsFormsRealEstateAdmin
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDescription.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxDescription.Location = new System.Drawing.Point(24, 468);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
@@ -186,6 +189,34 @@ namespace WindowsFormsRealEstateAdmin
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // labelPhotoNumber
+            // 
+            this.labelPhotoNumber.AutoSize = true;
+            this.labelPhotoNumber.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPhotoNumber.Location = new System.Drawing.Point(266, 397);
+            this.labelPhotoNumber.Name = "labelPhotoNumber";
+            this.labelPhotoNumber.Size = new System.Drawing.Size(48, 25);
+            this.labelPhotoNumber.TabIndex = 21;
+            this.labelPhotoNumber.Text = "1/5";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(21, 368);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 18);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Floor";
+            // 
+            // numericUpDownFloor
+            // 
+            this.numericUpDownFloor.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownFloor.Location = new System.Drawing.Point(24, 389);
+            this.numericUpDownFloor.Name = "numericUpDownFloor";
+            this.numericUpDownFloor.Size = new System.Drawing.Size(190, 33);
+            this.numericUpDownFloor.TabIndex = 22;
+            // 
             // buttonAddPhoto
             // 
             this.buttonAddPhoto.Image = global::WindowsFormsRealEstateAdmin.Properties.Resources.add_photo;
@@ -205,21 +236,13 @@ namespace WindowsFormsRealEstateAdmin
             this.pictureBoxSlider.TabIndex = 15;
             this.pictureBoxSlider.TabStop = false;
             // 
-            // labelPhotoNumber
-            // 
-            this.labelPhotoNumber.AutoSize = true;
-            this.labelPhotoNumber.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPhotoNumber.Location = new System.Drawing.Point(266, 397);
-            this.labelPhotoNumber.Name = "labelPhotoNumber";
-            this.labelPhotoNumber.Size = new System.Drawing.Size(48, 25);
-            this.labelPhotoNumber.TabIndex = 21;
-            this.labelPhotoNumber.Text = "1/5";
-            // 
-            // FormApartmentCreator
+            // FormApartmentManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 682);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.numericUpDownFloor);
             this.Controls.Add(this.labelPhotoNumber);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonNext);
@@ -238,9 +261,10 @@ namespace WindowsFormsRealEstateAdmin
             this.Controls.Add(this.textBoxStreet);
             this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormApartmentCreator";
+            this.Name = "FormApartmentManager";
             this.Text = "Apartment creator";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRooms)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -266,5 +290,7 @@ namespace WindowsFormsRealEstateAdmin
         private System.Windows.Forms.Button buttonNext;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label labelPhotoNumber;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numericUpDownFloor;
     }
 }

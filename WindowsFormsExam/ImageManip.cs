@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,7 +28,26 @@ namespace WindowsFormsExam
         {
             MemoryStream ms = new MemoryStream(arr);
             Image img = Image.FromStream(ms);
+
             return img;
+        }
+
+        public static byte[] PhotoSliderToByteArray(byte[][] sliderArr)
+        {
+            MemoryStream ms = new MemoryStream();
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(ms, sliderArr);
+
+            return ms.ToArray();
+        }
+
+        public static byte[][] ByteArrToPhotoSlider(byte[] arr)
+        {
+            MemoryStream ms = new MemoryStream(arr);
+            BinaryFormatter formatter = new BinaryFormatter();
+            byte[][] slider = (byte[][])formatter.Deserialize(ms);
+
+            return slider;
         }
     }
 }

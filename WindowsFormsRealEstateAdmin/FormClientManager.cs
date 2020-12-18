@@ -13,13 +13,13 @@ namespace WindowsFormsRealEstateAdmin
 {
     public partial class FormClientManager : Form
     {
-        ClientContext db = new ClientContext();
+        RealEstateContext db = new RealEstateContext();
         List<Client> clients;
 
         public FormClientManager()
         {
             InitializeComponent();
-            clients = db.Clients.ToList();
+            //clients = db.Clients.ToList();
 
             listBoxClients.DataSource = clients;
             listBoxClients.DisplayMember = "FullName";
@@ -30,7 +30,7 @@ namespace WindowsFormsRealEstateAdmin
             Client client = listBoxClients.SelectedItem as Client;
             if (client != null)
             {
-                db.Clients.Remove(client);
+                //db.Clients.Remove(client);
                 clients.Remove(client);
                 db.SaveChanges();
             }

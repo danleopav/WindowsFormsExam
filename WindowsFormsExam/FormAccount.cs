@@ -12,7 +12,7 @@ namespace WindowsFormsExam
 {
     public partial class FormAccount : Form
     {
-        ClientContext db = new ClientContext();
+        RealEstateContext db = new RealEstateContext();
         bool isEyeOn = false;
 
         public FormAccount()
@@ -20,6 +20,15 @@ namespace WindowsFormsExam
             InitializeComponent();
 
             textBoxPassword.PasswordChar = '*';
+
+            if (!CheckLogin("admin"))
+            {
+                db.Clients.Add(new Client()
+                {
+                    FirstName = "admin"
+                });
+                db.SaveChanges();
+            }
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)

@@ -15,7 +15,7 @@ namespace WindowsFormsExam
 {
     public partial class FormRegistration : Form
     {
-        ClientContext db = new ClientContext();
+        RealEstateContext db = new RealEstateContext();
         byte[] profilePhotoByteArr;
 
         public FormRegistration()

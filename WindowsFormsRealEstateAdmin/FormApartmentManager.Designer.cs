@@ -30,75 +30,91 @@ namespace WindowsFormsRealEstateAdmin
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormApartmentManager));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonManageApartments = new System.Windows.Forms.Button();
-            this.buttonAdministration = new System.Windows.Forms.Button();
+            this.listBoxRealEstate = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // buttonEdit
             // 
-            this.groupBox1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(26, 67);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 163);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Create";
+            this.buttonEdit.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEdit.Location = new System.Drawing.Point(139, 468);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(113, 40);
+            this.buttonEdit.TabIndex = 0;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // groupBox2
+            // buttonAdd
             // 
-            this.groupBox2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(264, 67);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 163);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "View existing";
+            this.buttonAdd.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdd.Location = new System.Drawing.Point(11, 468);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(113, 40);
+            this.buttonAdd.TabIndex = 1;
+            this.buttonAdd.Text = "Add ";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRemove.Location = new System.Drawing.Point(266, 467);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(113, 40);
+            this.buttonRemove.TabIndex = 2;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(93, 13);
+            this.label1.Location = new System.Drawing.Point(44, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(304, 35);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Apartment manager";
+            this.label1.Size = new System.Drawing.Size(297, 35);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Manage Real Estate";
             // 
-            // buttonManageApartments
+            // listBoxRealEstate
             // 
-            this.buttonManageApartments.Image = global::WindowsFormsRealEstateAdmin.Properties.Resources.view_existing;
-            this.buttonManageApartments.Location = new System.Drawing.Point(273, 88);
-            this.buttonManageApartments.Name = "buttonManageApartments";
-            this.buttonManageApartments.Size = new System.Drawing.Size(182, 133);
-            this.buttonManageApartments.TabIndex = 12;
-            this.buttonManageApartments.UseVisualStyleBackColor = true;
+            this.listBoxRealEstate.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxRealEstate.FormattingEnabled = true;
+            this.listBoxRealEstate.ItemHeight = 25;
+            this.listBoxRealEstate.Location = new System.Drawing.Point(11, 77);
+            this.listBoxRealEstate.Name = "listBoxRealEstate";
+            this.listBoxRealEstate.Size = new System.Drawing.Size(367, 379);
+            this.listBoxRealEstate.TabIndex = 7;
             // 
-            // buttonAdministration
+            // label3
             // 
-            this.buttonAdministration.Image = global::WindowsFormsRealEstateAdmin.Properties.Resources._new;
-            this.buttonAdministration.Location = new System.Drawing.Point(32, 88);
-            this.buttonAdministration.Name = "buttonAdministration";
-            this.buttonAdministration.Size = new System.Drawing.Size(182, 133);
-            this.buttonAdministration.TabIndex = 11;
-            this.buttonAdministration.UseVisualStyleBackColor = true;
-            this.buttonAdministration.Click += new System.EventHandler(this.buttonAdministration_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(11, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 18);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Apartments";
             // 
-            // FormApartmentManager
+            // FormApartmentAdministration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 242);
-            this.Controls.Add(this.buttonManageApartments);
-            this.Controls.Add(this.buttonAdministration);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(397, 520);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.listBoxRealEstate);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonRemove);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.buttonEdit);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormApartmentManager";
-            this.Text = "Apartment manager";
+            this.Name = "FormApartmentAdministration";
+            this.Text = "Apartment administration";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,10 +122,11 @@ namespace WindowsFormsRealEstateAdmin
 
         #endregion
 
-        private System.Windows.Forms.Button buttonManageApartments;
-        private System.Windows.Forms.Button buttonAdministration;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listBoxRealEstate;
+        private System.Windows.Forms.Label label3;
     }
 }

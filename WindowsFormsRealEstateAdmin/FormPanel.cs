@@ -18,8 +18,8 @@ namespace WindowsFormsRealEstateAdmin
 
         private void buttonManageApartments_Click(object sender, EventArgs e)
         {
-            FormApartmentManager apartmentManager = new FormApartmentManager();
-            apartmentManager.ShowDialog();
+            FormApartmentManager apartmentAdministration = new FormApartmentManager();
+            apartmentAdministration.ShowDialog();
         }
     }
 }

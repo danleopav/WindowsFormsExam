@@ -10,7 +10,6 @@ namespace WindowsFormsExam
 {
     public class Client
     {
-        [Key]
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -21,6 +20,6 @@ namespace WindowsFormsExam
         public DateTime DateOfBirth { get; set; } = DateTime.Today;
         public bool RentingNow { get; set; }
         public byte[] ProfilePhoto { get; set; }
-        public Apartment Apartment { get; set; } 
+        public ICollection<Apartment> Apartments { get; set; } = new List<Apartment>();
     }
 }

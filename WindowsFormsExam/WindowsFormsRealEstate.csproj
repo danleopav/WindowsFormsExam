@@ -59,7 +59,7 @@
     <Compile Include="Apartment.cs" />
     <Compile Include="Cities.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="ClientContext.cs" />
+    <Compile Include="RealEstateContext.cs" />
     <Compile Include="FormAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +78,12 @@
     <Compile Include="FormRegistration.Designer.cs">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSearchApartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSearchApartment.Designer.cs">
+      <DependentUpon>FormSearchApartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageManip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRegistration.resx">
       <DependentUpon>FormRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSearchApartment.resx">
+      <DependentUpon>FormSearchApartment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

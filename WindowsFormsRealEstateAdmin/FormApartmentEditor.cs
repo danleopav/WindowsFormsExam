@@ -1,28 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsExam;
 
 namespace WindowsFormsRealEstateAdmin
 {
-    public partial class FormApartmentCreator : Form
+    public partial class FormApartmentEditor : Form
     {
         RealEstateContext db = new RealEstateContext();
         Apartment apartment;
-        Image photo = null;
         OpenFileDialog ofd = new OpenFileDialog();
+        Image photo;
         byte[][] photoSlider { get; set; } = new byte[5][];
         byte[] photoByteArr;
         string noImagePath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
         int photoNumber = 0;
 
-        public FormApartmentCreator()
+        public FormApartmentEditor(Apartment apartment)
         {
             InitializeComponent();
-            apartment = new Apartment();
+
+            this.apartment = apartment;  // ???
 
             numericUpDownRooms.DecimalPlaces = 0;
             numericUpDownRooms.Minimum = 1;
@@ -42,7 +46,7 @@ namespace WindowsFormsRealEstateAdmin
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(textBoxStreet.Text) ||
-                String.IsNullOrWhiteSpace(textBoxPrice.Text) || 
+                String.IsNullOrWhiteSpace(textBoxPrice.Text) ||
                 String.IsNullOrWhiteSpace(textBoxDescription.Text))
             {
                 MessageBox.Show("Fields can not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -60,10 +64,10 @@ namespace WindowsFormsRealEstateAdmin
             Enum.TryParse(comboBoxCity.SelectedValue.ToString(), out city);
             apartment.City = city;
 
-            if (CheckPrice(textBoxPrice.Text))
+            if (FormApartmentCreator.CheckPrice(textBoxPrice.Text))
             {
                 apartment.Price = Convert.ToInt32(textBoxPrice.Text);
-            }   
+            }
             else
             {
                 MessageBox.Show("Invalid price value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -72,9 +76,6 @@ namespace WindowsFormsRealEstateAdmin
 
             apartment.PhotoSlider = ImageManip.PhotoSliderToByteArray(photoSlider);
 
-            apartment.Client = db.Clients.FirstOrDefault();
-
-            db.Apartments.Add(apartment);
             db.SaveChanges();
 
             textBoxStreet.Text = String.Empty;
@@ -85,21 +86,6 @@ namespace WindowsFormsRealEstateAdmin
             pictureBoxSlider.Image = null;
             photoNumber = 0;
             labelPhotoNumber.Text = "1/5";
-            apartment = null;
-        }
-
-        public static bool CheckPrice(string price)
-        {
-            try
-            {
-                int tmp = Convert.ToInt32(price);
-
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
         }
 
         private void buttonAddPhoto_Click(object sender, EventArgs e)
@@ -116,13 +102,13 @@ namespace WindowsFormsRealEstateAdmin
             photoSlider[photoNumber] = photoByteArr;
         }
 
-        private void buttonNext_Click(object sender, EventArgs e)                           
+        private void buttonPrev_Click(object sender, EventArgs e)
         {
-            if (photoNumber + 1 >= 5)
+            if (photoNumber - 1 < 0)
             {
                 return;
             }
-            photoNumber++;
+            photoNumber--;
             labelPhotoNumber.Text = $"{photoNumber + 1}/5";
 
             if (photoSlider[photoNumber] != null)
@@ -133,17 +119,17 @@ namespace WindowsFormsRealEstateAdmin
             {
                 Image img = Image.FromFile(noImagePath);
                 img = ImageManip.ResizeImage(img, new Size(400, 240));
-                pictureBoxSlider.Image = img; 
+                pictureBoxSlider.Image = img;
             }
         }
 
-        private void buttonPrev_Click(object sender, EventArgs e)
+        private void buttonNext_Click(object sender, EventArgs e)
         {
-            if (photoNumber - 1 < 0)
+            if (photoNumber + 1 >= 5)
             {
                 return;
             }
-            photoNumber--;
+            photoNumber++;
             labelPhotoNumber.Text = $"{photoNumber + 1}/5";
 
             if (photoSlider[photoNumber] != null)
