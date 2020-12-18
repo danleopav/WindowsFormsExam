@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsExam;
 
@@ -13,20 +8,20 @@ namespace WindowsFormsRealEstateAdmin
 {
     public partial class FormApartmentEditor : Form
     {
-        RealEstateContext db = new RealEstateContext();
+        RealEstateContext db = new RealEstateContext(); 
         Apartment apartment;
         OpenFileDialog ofd = new OpenFileDialog();
         Image photo;
         byte[][] photoSlider { get; set; } = new byte[5][];
         byte[] photoByteArr;
-        string noImagePath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
+        string noPhotoPath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
         int photoNumber = 0;
 
         public FormApartmentEditor(Apartment apartment)
         {
             InitializeComponent();
 
-            this.apartment = apartment;  // ???
+            this.apartment = apartment;  
 
             numericUpDownRooms.DecimalPlaces = 0;
             numericUpDownRooms.Minimum = 1;
@@ -41,10 +36,22 @@ namespace WindowsFormsRealEstateAdmin
             ofd.Title = "Select profile photo";
             ofd.Filter = "JPG|*.jpg|PNG|*.png";
             ofd.Multiselect = false;
+
+            textBoxStreet.Text = apartment.Street;
+            comboBoxCity.SelectedItem = apartment.City;
+            textBoxPrice.Text = apartment.Price.ToString();
+            numericUpDownFloor.Value = apartment.Floor;
+            numericUpDownRooms.Value = apartment.Rooms;
+            textBoxDescription.Text = apartment.Description;
+            photoSlider = ImageManip.ByteArrToPhotoSlider(apartment.PhotoSlider);
+
+            pictureBoxSlider.Image = ImageManip.ByteArrayToImage(photoSlider[photoNumber]);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            apartment = db.Apartments.Single(x => x.Id == apartment.Id);
+
             if (String.IsNullOrWhiteSpace(textBoxStreet.Text) ||
                 String.IsNullOrWhiteSpace(textBoxPrice.Text) ||
                 String.IsNullOrWhiteSpace(textBoxDescription.Text))
@@ -117,7 +124,7 @@ namespace WindowsFormsRealEstateAdmin
             }
             else
             {
-                Image img = Image.FromFile(noImagePath);
+                Image img = Image.FromFile(noPhotoPath);
                 img = ImageManip.ResizeImage(img, new Size(400, 240));
                 pictureBoxSlider.Image = img;
             }
@@ -138,10 +145,18 @@ namespace WindowsFormsRealEstateAdmin
             }
             else
             {
-                Image img = Image.FromFile(noImagePath);
+                Image img = Image.FromFile(noPhotoPath);
                 img = ImageManip.ResizeImage(img, new Size(400, 240));
                 pictureBoxSlider.Image = img;
             }
+        }
+
+        private void buttonDeletePhoto_Click(object sender, EventArgs e)
+        {
+            Image img = Image.FromFile(noPhotoPath);
+            img = ImageManip.ResizeImage(img, new Size(400,240));
+            photoSlider[photoNumber] = ImageManip.ImageToByteArray(img);
+            pictureBoxSlider.Image = img;
         }
     }
 }

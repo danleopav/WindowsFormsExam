@@ -35,7 +35,6 @@ namespace WindowsFormsRealEstateAdmin
             this.labelPhotoNumber = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
-            this.buttonPrev = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,6 +46,8 @@ namespace WindowsFormsRealEstateAdmin
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxStreet = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonPrev = new System.Windows.Forms.Button();
+            this.buttonDeletePhoto = new System.Windows.Forms.Button();
             this.buttonAddPhoto = new System.Windows.Forms.Button();
             this.pictureBoxSlider = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloor)).BeginInit();
@@ -76,7 +77,7 @@ namespace WindowsFormsRealEstateAdmin
             // 
             this.labelPhotoNumber.AutoSize = true;
             this.labelPhotoNumber.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPhotoNumber.Location = new System.Drawing.Point(266, 391);
+            this.labelPhotoNumber.Location = new System.Drawing.Point(271, 391);
             this.labelPhotoNumber.Name = "labelPhotoNumber";
             this.labelPhotoNumber.Size = new System.Drawing.Size(48, 25);
             this.labelPhotoNumber.TabIndex = 40;
@@ -96,24 +97,13 @@ namespace WindowsFormsRealEstateAdmin
             // buttonNext
             // 
             this.buttonNext.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNext.Location = new System.Drawing.Point(452, 381);
+            this.buttonNext.Location = new System.Drawing.Point(409, 383);
             this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(121, 42);
+            this.buttonNext.Size = new System.Drawing.Size(59, 42);
             this.buttonNext.TabIndex = 38;
             this.buttonNext.Text = "->";
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
-            // 
-            // buttonPrev
-            // 
-            this.buttonPrev.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrev.Location = new System.Drawing.Point(325, 381);
-            this.buttonPrev.Name = "buttonPrev";
-            this.buttonPrev.Size = new System.Drawing.Size(121, 42);
-            this.buttonPrev.TabIndex = 37;
-            this.buttonPrev.Text = "<-";
-            this.buttonPrev.UseVisualStyleBackColor = true;
-            this.buttonPrev.Click += new System.EventHandler(this.buttonPrev_Click);
             // 
             // label7
             // 
@@ -217,6 +207,27 @@ namespace WindowsFormsRealEstateAdmin
             this.label2.TabIndex = 24;
             this.label2.Text = "Street";
             // 
+            // buttonPrev
+            // 
+            this.buttonPrev.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrev.Location = new System.Drawing.Point(344, 383);
+            this.buttonPrev.Name = "buttonPrev";
+            this.buttonPrev.Size = new System.Drawing.Size(59, 42);
+            this.buttonPrev.TabIndex = 37;
+            this.buttonPrev.Text = "<-";
+            this.buttonPrev.UseVisualStyleBackColor = true;
+            this.buttonPrev.Click += new System.EventHandler(this.buttonPrev_Click);
+            // 
+            // buttonDeletePhoto
+            // 
+            this.buttonDeletePhoto.Image = global::WindowsFormsRealEstateAdmin.Properties.Resources.delete_photo;
+            this.buttonDeletePhoto.Location = new System.Drawing.Point(488, 372);
+            this.buttonDeletePhoto.Name = "buttonDeletePhoto";
+            this.buttonDeletePhoto.Size = new System.Drawing.Size(85, 70);
+            this.buttonDeletePhoto.TabIndex = 43;
+            this.buttonDeletePhoto.UseVisualStyleBackColor = true;
+            this.buttonDeletePhoto.Click += new System.EventHandler(this.buttonDeletePhoto_Click);
+            // 
             // buttonAddPhoto
             // 
             this.buttonAddPhoto.Image = global::WindowsFormsRealEstateAdmin.Properties.Resources.add_photo;
@@ -241,6 +252,7 @@ namespace WindowsFormsRealEstateAdmin
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 682);
+            this.Controls.Add(this.buttonDeletePhoto);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.numericUpDownFloor);
             this.Controls.Add(this.labelPhotoNumber);
@@ -278,7 +290,6 @@ namespace WindowsFormsRealEstateAdmin
         private System.Windows.Forms.Label labelPhotoNumber;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonNext;
-        private System.Windows.Forms.Button buttonPrev;
         private System.Windows.Forms.Button buttonAddPhoto;
         private System.Windows.Forms.PictureBox pictureBoxSlider;
         private System.Windows.Forms.Label label7;
@@ -292,5 +303,7 @@ namespace WindowsFormsRealEstateAdmin
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxStreet;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonPrev;
+        private System.Windows.Forms.Button buttonDeletePhoto;
     }
 }
