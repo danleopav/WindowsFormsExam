@@ -28,5 +28,11 @@ namespace WindowsFormsExam
             FormSearchApartment search = new FormSearchApartment();
             search.ShowDialog();
         }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            FormProfileSetup formProfile = new FormProfileSetup(client);
+            formProfile.ShowDialog();
+        }
     }
 }

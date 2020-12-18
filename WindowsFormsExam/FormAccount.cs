@@ -21,10 +21,11 @@ namespace WindowsFormsExam
 
             textBoxPassword.PasswordChar = '*';
 
-            if (!CheckLogin("admin"))
+            if (!ClientAccountValidator.CheckUsername("admin", db.Clients))
             {
                 db.Clients.Add(new Client()
                 {
+                    Username = "admin",
                     FirstName = "admin"
                 });
                 db.SaveChanges();
@@ -33,14 +34,14 @@ namespace WindowsFormsExam
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            if (!CheckLogin(textBoxUsername.Text))
+            if (!ClientAccountValidator.CheckUsername(textBoxUsername.Text, db.Clients))
             {
                 MessageBox.Show("Incorrect username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxUsername.Text = String.Empty;
                 textBoxPassword.Text = String.Empty;
             }
 
-            if (CheckLogin(textBoxUsername.Text) && CheckPassword(textBoxPassword.Text))
+            if (ClientAccountValidator.CheckUsername(textBoxUsername.Text, db.Clients) && ClientAccountValidator.CheckPassword(textBoxPassword.Text, db.Clients))
             {
                 Client client = FindClient(textBoxUsername.Text);
 
@@ -63,37 +64,6 @@ namespace WindowsFormsExam
                 }
             }
             return null;
-        }
-
-        bool CheckLogin(string username)
-        {
-            if (db.Clients.Count() == 0)
-            {
-                return false;
-            }
-
-            foreach (var client in db.Clients)
-            {
-                if (client.Username == username)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        bool CheckPassword(string pass)
-        {
-            foreach (var client in db.Clients)
-            {
-                if (client.Password == pass)
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         private void buttonEye_Click(object sender, EventArgs e)

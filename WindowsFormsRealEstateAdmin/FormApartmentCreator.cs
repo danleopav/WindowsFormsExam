@@ -16,7 +16,7 @@ namespace WindowsFormsRealEstateAdmin
         OpenFileDialog ofd = new OpenFileDialog();
         byte[][] photoSlider { get; set; } = new byte[5][];
         byte[] photoByteArr;
-        string noImagePath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
+        string noPhotoPath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
         int photoNumber = 0;
 
         public FormApartmentCreator()
@@ -131,7 +131,7 @@ namespace WindowsFormsRealEstateAdmin
             }
             else
             {
-                Image img = Image.FromFile(noImagePath);
+                Image img = Image.FromFile(noPhotoPath);
                 img = ImageManip.ResizeImage(img, new Size(400, 240));
                 pictureBoxSlider.Image = img; 
             }
@@ -152,10 +152,18 @@ namespace WindowsFormsRealEstateAdmin
             }
             else
             {
-                Image img = Image.FromFile(noImagePath);
+                Image img = Image.FromFile(noPhotoPath);
                 img = ImageManip.ResizeImage(img, new Size(400, 240));
                 pictureBoxSlider.Image = img;
             }
+        }
+
+        private void buttonDeletePhoto_Click(object sender, EventArgs e)
+        {
+            Image img = Image.FromFile(noPhotoPath);
+            img = ImageManip.ResizeImage(img, new Size(400, 240));
+            photoSlider[photoNumber] = ImageManip.ImageToByteArray(img);
+            pictureBoxSlider.Image = img;
         }
     }
 }

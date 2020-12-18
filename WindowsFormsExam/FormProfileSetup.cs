@@ -1,30 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsExam
 {
-    public partial class FormRegistration : Form
+    public partial class FormProfileSetup : Form
     {
         RealEstateContext db = new RealEstateContext();
+        Client client;
         byte[] profilePhotoByteArr;
 
-        public FormRegistration()
+        public FormProfileSetup(Client c)
         {
             InitializeComponent();
+
+            textBoxFirstName.Text = c.FirstName;
+            textBoxLastName.Text = c.LastName;
+            textBoxUsername.Text = c.Username;
+            textBoxPassword.Text = c.Password;
+            textBoxEmail.Text = c.Email;
+            dateTimePickerDateOfBirth.Value = c.DateOfBirth;
+
+            Image img = ImageManip.ByteArrayToImage(c.ProfilePhoto);
+            img = ImageManip.ResizeImage(img, new Size(200, 220));
+            pictureBoxProfilePhoto.Image = img;
         }
 
-        private void buttonCreateAccount_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
+            client = db.Clients.Single(x => x.Id == client.Id);
+
             if (String.IsNullOrWhiteSpace(textBoxUsername.Text) ||
                 String.IsNullOrWhiteSpace(textBoxPassword.Text) ||
                 String.IsNullOrWhiteSpace(textBoxFirstName.Text) ||
@@ -37,9 +48,9 @@ namespace WindowsFormsExam
 
             TimeSpan span = DateTime.Today - dateTimePickerDateOfBirth.Value;
             double dif = span.Days / 365.25;
-            if (dif < 18.0)
+            if (dif < 18.00)
             {
-                MessageBox.Show("You must be at least 18 years old", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("you must be at least 18 years old", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -52,17 +63,15 @@ namespace WindowsFormsExam
             if (ClientAccountValidator.CheckEmail(textBoxEmail.Text, db.Clients))
             {
                 MessageBox.Show("Inputed e-mail currently being used by other user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            Client client = new Client()
-            {
-                Username = textBoxUsername.Text,
-                Password = textBoxPassword.Text,
-                FirstName = textBoxFirstName.Text,
-                LastName = textBoxLastName.Text,
-                FullName = textBoxFirstName.Text + " " + textBoxLastName.Text,
-                DateOfBirth = dateTimePickerDateOfBirth.Value
-            };
+            client.Username = textBoxUsername.Text;
+            client.Password = textBoxPassword.Text;
+            client.FirstName = textBoxFirstName.Text;
+            client.LastName = textBoxLastName.Text;
+            client.FullName = textBoxFirstName.Text + " " + textBoxLastName.Text;
+            client.DateOfBirth = dateTimePickerDateOfBirth.Value;
 
             if (ClientAccountValidator.ValidEmail(textBoxEmail.Text))
             {
@@ -74,16 +83,8 @@ namespace WindowsFormsExam
                 return;
             }
 
+            client.ProfilePhoto = profilePhotoByteArr; 
 
-            if (profilePhotoByteArr == null)
-            {
-                MessageBox.Show("Select profile photo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            client.ProfilePhoto = profilePhotoByteArr;
-
-            db.Clients.Add(client);
             db.SaveChanges();
 
             textBoxUsername.Text = String.Empty;
@@ -107,11 +108,11 @@ namespace WindowsFormsExam
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 profilePhoto = Image.FromFile(ofd.FileName);
-                profilePhoto = ImageManip.ResizeImage(profilePhoto, new Size(200,220));
+                profilePhoto = ImageManip.ResizeImage(profilePhoto, new Size(200, 220));
             }
 
             profilePhotoByteArr = ImageManip.ImageToByteArray(profilePhoto);
-            pictureBoxProfilePhoto.Image = profilePhoto;  
+            pictureBoxProfilePhoto.Image = profilePhoto;
         }
     }
 }

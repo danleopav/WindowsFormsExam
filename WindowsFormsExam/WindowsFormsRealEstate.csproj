@@ -59,6 +59,13 @@
     <Compile Include="Apartment.cs" />
     <Compile Include="Cities.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="ClientAccountValidator.cs" />
+    <Compile Include="FormProfileSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProfileSetup.Designer.cs">
+      <DependentUpon>FormProfileSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="RealEstateContext.cs" />
     <Compile Include="FormAccount.cs">
       <SubType>Form</SubType>
@@ -92,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProfileSetup.resx">
+      <DependentUpon>FormProfileSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRegistration.resx">
       <DependentUpon>FormRegistration.cs</DependentUpon>

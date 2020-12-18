@@ -47,8 +47,9 @@ namespace WindowsFormsRealEstateAdmin
             this.labelPhotoNumber = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDownFloor = new System.Windows.Forms.NumericUpDown();
-            this.buttonAddPhoto = new System.Windows.Forms.Button();
             this.pictureBoxSlider = new System.Windows.Forms.PictureBox();
+            this.buttonAddPhoto = new System.Windows.Forms.Button();
+            this.buttonDeletePhoto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRooms)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlider)).BeginInit();
@@ -159,9 +160,9 @@ namespace WindowsFormsRealEstateAdmin
             // buttonPrev
             // 
             this.buttonPrev.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrev.Location = new System.Drawing.Point(325, 387);
+            this.buttonPrev.Location = new System.Drawing.Point(343, 390);
             this.buttonPrev.Name = "buttonPrev";
-            this.buttonPrev.Size = new System.Drawing.Size(121, 42);
+            this.buttonPrev.Size = new System.Drawing.Size(59, 42);
             this.buttonPrev.TabIndex = 18;
             this.buttonPrev.Text = "<-";
             this.buttonPrev.UseVisualStyleBackColor = true;
@@ -170,9 +171,9 @@ namespace WindowsFormsRealEstateAdmin
             // buttonNext
             // 
             this.buttonNext.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNext.Location = new System.Drawing.Point(452, 387);
+            this.buttonNext.Location = new System.Drawing.Point(408, 389);
             this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(121, 42);
+            this.buttonNext.Size = new System.Drawing.Size(59, 42);
             this.buttonNext.TabIndex = 19;
             this.buttonNext.Text = "->";
             this.buttonNext.UseVisualStyleBackColor = true;
@@ -193,7 +194,7 @@ namespace WindowsFormsRealEstateAdmin
             // 
             this.labelPhotoNumber.AutoSize = true;
             this.labelPhotoNumber.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPhotoNumber.Location = new System.Drawing.Point(266, 397);
+            this.labelPhotoNumber.Location = new System.Drawing.Point(272, 397);
             this.labelPhotoNumber.Name = "labelPhotoNumber";
             this.labelPhotoNumber.Size = new System.Drawing.Size(48, 25);
             this.labelPhotoNumber.TabIndex = 21;
@@ -217,6 +218,15 @@ namespace WindowsFormsRealEstateAdmin
             this.numericUpDownFloor.Size = new System.Drawing.Size(190, 33);
             this.numericUpDownFloor.TabIndex = 22;
             // 
+            // pictureBoxSlider
+            // 
+            this.pictureBoxSlider.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxSlider.Location = new System.Drawing.Point(264, 131);
+            this.pictureBoxSlider.Name = "pictureBoxSlider";
+            this.pictureBoxSlider.Size = new System.Drawing.Size(400, 240);
+            this.pictureBoxSlider.TabIndex = 15;
+            this.pictureBoxSlider.TabStop = false;
+            // 
             // buttonAddPhoto
             // 
             this.buttonAddPhoto.Image = global::WindowsFormsRealEstateAdmin.Properties.Resources.add_photo;
@@ -227,20 +237,22 @@ namespace WindowsFormsRealEstateAdmin
             this.buttonAddPhoto.UseVisualStyleBackColor = true;
             this.buttonAddPhoto.Click += new System.EventHandler(this.buttonAddPhoto_Click);
             // 
-            // pictureBoxSlider
+            // buttonDeletePhoto
             // 
-            this.pictureBoxSlider.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxSlider.Location = new System.Drawing.Point(264, 131);
-            this.pictureBoxSlider.Name = "pictureBoxSlider";
-            this.pictureBoxSlider.Size = new System.Drawing.Size(400, 240);
-            this.pictureBoxSlider.TabIndex = 15;
-            this.pictureBoxSlider.TabStop = false;
+            this.buttonDeletePhoto.Image = global::WindowsFormsRealEstateAdmin.Properties.Resources.delete_photo;
+            this.buttonDeletePhoto.Location = new System.Drawing.Point(488, 377);
+            this.buttonDeletePhoto.Name = "buttonDeletePhoto";
+            this.buttonDeletePhoto.Size = new System.Drawing.Size(85, 70);
+            this.buttonDeletePhoto.TabIndex = 24;
+            this.buttonDeletePhoto.UseVisualStyleBackColor = true;
+            this.buttonDeletePhoto.Click += new System.EventHandler(this.buttonDeletePhoto_Click);
             // 
-            // FormApartmentManager
+            // FormApartmentCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 682);
+            this.Controls.Add(this.buttonDeletePhoto);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.numericUpDownFloor);
             this.Controls.Add(this.labelPhotoNumber);
@@ -261,7 +273,7 @@ namespace WindowsFormsRealEstateAdmin
             this.Controls.Add(this.textBoxStreet);
             this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormApartmentManager";
+            this.Name = "FormApartmentCreator";
             this.Text = "Apartment creator";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRooms)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloor)).EndInit();
@@ -285,12 +297,13 @@ namespace WindowsFormsRealEstateAdmin
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBoxSlider;
-        private System.Windows.Forms.Button buttonAddPhoto;
         private System.Windows.Forms.Button buttonPrev;
         private System.Windows.Forms.Button buttonNext;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label labelPhotoNumber;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numericUpDownFloor;
+        private System.Windows.Forms.Button buttonAddPhoto;
+        private System.Windows.Forms.Button buttonDeletePhoto;
     }
 }
