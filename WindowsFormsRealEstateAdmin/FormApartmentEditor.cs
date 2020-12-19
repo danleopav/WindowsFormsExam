@@ -82,11 +82,12 @@ namespace WindowsFormsRealEstateAdmin
             }
 
             bool hasPhoto = false;
-            for (int i = 0; i < photoSlider.Length; ++i)
+            int photoIdx = 0;
+            foreach (var arr in photoSlider)
             {
-                if (photoSlider[i] != null)
+                if (arr != null)
                 {
-                    if (photoSlider[i].GetUpperBound(0) > 1)
+                    if (photoSlider[photoIdx++].GetUpperBound(0) > 1)
                     {
                         hasPhoto = true;
                     }

@@ -16,9 +16,10 @@ namespace WindowsFormsExam
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName { get; set; }
+        public Status Status { get; set; } 
         public string Email { get; set; }
         public DateTime DateOfBirth { get; set; } = DateTime.Today;
-        public bool RentingNow { get; set; }
+        public bool RentingNow { get; set; } = false;
         public byte[] ProfilePhoto { get; set; }
         public ICollection<Apartment> Apartments { get; set; } = new List<Apartment>();
     }

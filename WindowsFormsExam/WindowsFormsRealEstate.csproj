@@ -94,6 +94,7 @@
     <Compile Include="ImageManip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Status.cs" />
     <EmbeddedResource Include="FormAccount.resx">
       <DependentUpon>FormAccount.cs</DependentUpon>
     </EmbeddedResource>

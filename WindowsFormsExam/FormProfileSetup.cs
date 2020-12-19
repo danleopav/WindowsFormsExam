@@ -54,11 +54,15 @@ namespace WindowsFormsExam
                 return;
             }
 
-            if (ClientAccountValidator.CheckUsername(textBoxUsername.Text, db.Clients))
+            if (textBoxUsername.Text != client.Username)
             {
-                MessageBox.Show("This username already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (ClientAccountValidator.CheckUsername(textBoxUsername.Text, db.Clients))
+                {
+                    MessageBox.Show("This username already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
+            
 
             if (client.Email != textBoxEmail.Text)
             {
@@ -73,7 +77,7 @@ namespace WindowsFormsExam
             client.Password = textBoxPassword.Text;
             client.FirstName = textBoxFirstName.Text;
             client.LastName = textBoxLastName.Text;
-            client.FullName = textBoxFirstName.Text + " " + textBoxLastName.Text;
+            client.FullName = textBoxFirstName.Text + " " + textBoxLastName.Text + " - " + client.Status.ToString();
             client.DateOfBirth = dateTimePickerDateOfBirth.Value;
 
             if (ClientAccountValidator.ValidEmail(textBoxEmail.Text))

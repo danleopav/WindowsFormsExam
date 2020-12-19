@@ -36,7 +36,6 @@ namespace WindowsFormsExam
             this.buttonNext = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxStreet = new System.Windows.Forms.TextBox();
-            this.pictureBoxSlider = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxCity = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,9 +45,10 @@ namespace WindowsFormsExam
             this.textBoxFloor = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonSendRequest = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.labelPhotoNumber = new System.Windows.Forms.Label();
+            this.pictureBoxSlider = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +67,7 @@ namespace WindowsFormsExam
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(337, 9);
+            this.label1.Location = new System.Drawing.Point(328, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(335, 35);
             this.label1.TabIndex = 1;
@@ -113,15 +113,6 @@ namespace WindowsFormsExam
             this.textBoxStreet.Name = "textBoxStreet";
             this.textBoxStreet.Size = new System.Drawing.Size(590, 33);
             this.textBoxStreet.TabIndex = 20;
-            // 
-            // pictureBoxSlider
-            // 
-            this.pictureBoxSlider.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxSlider.Location = new System.Drawing.Point(473, 71);
-            this.pictureBoxSlider.Name = "pictureBoxSlider";
-            this.pictureBoxSlider.Size = new System.Drawing.Size(400, 240);
-            this.pictureBoxSlider.TabIndex = 16;
-            this.pictureBoxSlider.TabStop = false;
             // 
             // label3
             // 
@@ -209,15 +200,16 @@ namespace WindowsFormsExam
             this.textBoxDescription.Size = new System.Drawing.Size(640, 145);
             this.textBoxDescription.TabIndex = 29;
             // 
-            // button2
+            // buttonSendRequest
             // 
-            this.button2.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 638);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(190, 40);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonSendRequest.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSendRequest.Location = new System.Drawing.Point(12, 642);
+            this.buttonSendRequest.Name = "buttonSendRequest";
+            this.buttonSendRequest.Size = new System.Drawing.Size(956, 40);
+            this.buttonSendRequest.TabIndex = 30;
+            this.buttonSendRequest.Text = "Send a rental request";
+            this.buttonSendRequest.UseVisualStyleBackColor = true;
+            this.buttonSendRequest.Click += new System.EventHandler(this.buttonSendRequest_Click);
             // 
             // label7
             // 
@@ -239,14 +231,23 @@ namespace WindowsFormsExam
             this.labelPhotoNumber.TabIndex = 32;
             this.labelPhotoNumber.Text = "1/5";
             // 
+            // pictureBoxSlider
+            // 
+            this.pictureBoxSlider.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxSlider.Location = new System.Drawing.Point(473, 71);
+            this.pictureBoxSlider.Name = "pictureBoxSlider";
+            this.pictureBoxSlider.Size = new System.Drawing.Size(400, 240);
+            this.pictureBoxSlider.TabIndex = 16;
+            this.pictureBoxSlider.TabStop = false;
+            // 
             // FormSearchApartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1001, 687);
+            this.ClientSize = new System.Drawing.Size(1001, 692);
             this.Controls.Add(this.labelPhotoNumber);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonSendRequest);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.textBoxFloor);
             this.Controls.Add(this.label6);
@@ -290,7 +291,7 @@ namespace WindowsFormsExam
         private System.Windows.Forms.TextBox textBoxFloor;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxDescription;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonSendRequest;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelPhotoNumber;
     }

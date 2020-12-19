@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,13 +19,17 @@ namespace WindowsFormsExam
         RealEstateContext db = new RealEstateContext();
         List<Apartment> apartments;
         Apartment apartment;
+        Client client;
         byte[][] photoSlider;
         int photoNumber = 0;
         string noImagePath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
 
-        public FormSearchApartment()
+        public FormSearchApartment(Client client)
         {
             InitializeComponent();
+
+            this.client = client;
+
             apartments = db.Apartments.ToList();
 
             listBoxRealEstate.DataSource = apartments;
@@ -96,6 +104,11 @@ namespace WindowsFormsExam
                 img = ImageManip.ResizeImage(img, new Size(400, 240));
                 pictureBoxSlider.Image = img;
             }
+        }
+
+        private void buttonSendRequest_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
