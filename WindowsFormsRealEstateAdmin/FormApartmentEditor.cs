@@ -81,6 +81,23 @@ namespace WindowsFormsRealEstateAdmin
                 return;
             }
 
+            bool hasPhoto = false;
+            for (int i = 0; i < photoSlider.Length; ++i)
+            {
+                if (photoSlider[i] != null)
+                {
+                    if (photoSlider[i].GetUpperBound(0) > 1)
+                    {
+                        hasPhoto = true;
+                    }
+                }
+            }
+            if (!hasPhoto)
+            {
+                MessageBox.Show("Pick at least one photo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             apartment.PhotoSlider = ImageManip.PhotoSliderToByteArray(photoSlider);
 
             db.SaveChanges();
@@ -124,9 +141,7 @@ namespace WindowsFormsRealEstateAdmin
             }
             else
             {
-                Image img = Image.FromFile(noPhotoPath);
-                img = ImageManip.ResizeImage(img, new Size(400, 240));
-                pictureBoxSlider.Image = img;
+                pictureBoxSlider.Image = ImageManip.ResizeImage(Image.FromFile(noPhotoPath), new Size(400, 240));
             }
         }
 
@@ -145,18 +160,14 @@ namespace WindowsFormsRealEstateAdmin
             }
             else
             {
-                Image img = Image.FromFile(noPhotoPath);
-                img = ImageManip.ResizeImage(img, new Size(400, 240));
-                pictureBoxSlider.Image = img;
+                pictureBoxSlider.Image = ImageManip.ResizeImage(Image.FromFile(noPhotoPath), new Size(400, 240));
             }
         }
 
         private void buttonDeletePhoto_Click(object sender, EventArgs e)
         {
-            Image img = Image.FromFile(noPhotoPath);
-            img = ImageManip.ResizeImage(img, new Size(400,240));
-            photoSlider[photoNumber] = ImageManip.ImageToByteArray(img);
-            pictureBoxSlider.Image = img;
+            photoSlider[photoNumber] = null;
+            pictureBoxSlider.Image = ImageManip.ResizeImage(Image.FromFile(noPhotoPath), new Size(400, 240));
         }
     }
 }

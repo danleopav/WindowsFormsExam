@@ -52,6 +52,7 @@ namespace WindowsFormsExam
             if (ClientAccountValidator.CheckEmail(textBoxEmail.Text, db.Clients))
             {
                 MessageBox.Show("Inputed e-mail currently being used by other user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             Client client = new Client()
@@ -81,7 +82,7 @@ namespace WindowsFormsExam
             }
             if (profilePhotoByteArr.GetUpperBound(0) < 1)
             {
-                MessageBox.Show("Select profile photo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Pick profile photo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

@@ -101,7 +101,7 @@ namespace WindowsFormsRealEstateAdmin
             this.label3.TabIndex = 9;
             this.label3.Text = "Apartments";
             // 
-            // FormApartmentAdministration
+            // FormApartmentManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -113,8 +113,8 @@ namespace WindowsFormsRealEstateAdmin
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonEdit);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormApartmentAdministration";
-            this.Text = "Apartment administration";
+            this.Name = "FormApartmentManager";
+            this.Text = "Apartment management";
             this.ResumeLayout(false);
             this.PerformLayout();
 

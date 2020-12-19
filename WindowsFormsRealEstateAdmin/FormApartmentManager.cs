@@ -35,19 +35,27 @@ namespace WindowsFormsRealEstateAdmin
         private void buttonRemove_Click(object sender, EventArgs e)
         {
             Apartment apartment = listBoxRealEstate.SelectedItem as Apartment;
-            apartments.Remove(apartment);
-            db.Apartments.Remove(apartment);
-            db.SaveChanges();
+            if (apartment != null)
+            {
+                apartments.Remove(apartment);
+                db.Apartments.Remove(apartment);
+                db.SaveChanges();
 
-            listBoxRealEstate.DataSource = null;
-            listBoxRealEstate.DataSource = db.Apartments.ToList();
+                listBoxRealEstate.DataSource = null;
+                listBoxRealEstate.DataSource = db.Apartments.ToList();
+                listBoxRealEstate.DisplayMember = "Street";
+                listBoxRealEstate.ValueMember = "Id";
+            }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             Apartment apartment = listBoxRealEstate.SelectedItem as Apartment;
-            FormApartmentEditor apartmentEditor = new FormApartmentEditor(apartment);
-            apartmentEditor.ShowDialog();
+            if (apartment != null)
+            {
+                FormApartmentEditor apartmentEditor = new FormApartmentEditor(apartment);
+                apartmentEditor.ShowDialog();
+            }
         }
     }
 }
