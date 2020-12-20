@@ -21,7 +21,7 @@ namespace WindowsFormsExam
             ImageConverter converter = new ImageConverter();
             byte[] arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
 
-            return arr;
+            return arr;          
         }
 
         public static Image ByteArrayToImage(byte[] arr)
@@ -29,6 +29,7 @@ namespace WindowsFormsExam
             MemoryStream ms = new MemoryStream(arr);
             Image img = Image.FromStream(ms);
 
+            ms.Close();
             return img;
         }
 
@@ -38,6 +39,7 @@ namespace WindowsFormsExam
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(ms, sliderArr);
 
+            ms.Close();
             return ms.ToArray();
         }
 
@@ -47,6 +49,7 @@ namespace WindowsFormsExam
             BinaryFormatter formatter = new BinaryFormatter();
             byte[][] slider = (byte[][])formatter.Deserialize(ms);
 
+            ms.Close();
             return slider;
         }
     }

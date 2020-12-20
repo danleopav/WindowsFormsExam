@@ -19,7 +19,6 @@ namespace WindowsFormsExam
         RealEstateContext db = new RealEstateContext();
         List<Apartment> apartments;
         Apartment apartment;
-        Client client;
         byte[][] photoSlider;
         int photoNumber = 0;
         string noImagePath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
@@ -27,8 +26,6 @@ namespace WindowsFormsExam
         public FormSearchApartment(Client client)
         {
             InitializeComponent();
-
-            this.client = client;
 
             apartments = db.Apartments.ToList();
 
@@ -108,7 +105,7 @@ namespace WindowsFormsExam
 
         private void buttonSendRequest_Click(object sender, EventArgs e)
         {
-            
+                    
         }
     }
 }

@@ -77,7 +77,7 @@ namespace WindowsFormsExam
             client.Password = textBoxPassword.Text;
             client.FirstName = textBoxFirstName.Text;
             client.LastName = textBoxLastName.Text;
-            client.FullName = textBoxFirstName.Text + " " + textBoxLastName.Text + " - " + client.Status.ToString();
+            client.FullName = textBoxFirstName.Text + " " + textBoxLastName.Text;
             client.DateOfBirth = dateTimePickerDateOfBirth.Value;
 
             if (ClientAccountValidator.ValidEmail(textBoxEmail.Text))
