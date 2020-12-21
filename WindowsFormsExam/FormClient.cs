@@ -34,7 +34,7 @@ namespace WindowsFormsExam
 
         private void buttonFind_Click(object sender, EventArgs e)
         {
-            FormSearchApartment search = new FormSearchApartment(client);
+            FormSearchRealEstate search = new FormSearchRealEstate(client);
             search.ShowDialog();
         }
 

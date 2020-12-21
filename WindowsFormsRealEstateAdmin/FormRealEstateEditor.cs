@@ -9,7 +9,7 @@ namespace WindowsFormsRealEstateAdmin
     public partial class FormRealEstateEditor : Form
     {
         AgencyContext db = new AgencyContext(); 
-        RealEstate apartment;
+        RealEstate realEsate;
         OpenFileDialog ofd = new OpenFileDialog();
         Image photo;
         byte[][] photoSlider { get; set; } = new byte[5][];
@@ -17,11 +17,11 @@ namespace WindowsFormsRealEstateAdmin
         string noPhotoPath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
         int photoNumber = 0;
 
-        public FormRealEstateEditor(RealEstate apartment)
+        public FormRealEstateEditor(RealEstate realEstate)
         {
             InitializeComponent();
 
-            this.apartment = apartment;  
+            this.realEsate = realEstate;  
 
             numericUpDownRooms.DecimalPlaces = 0;
             numericUpDownRooms.Minimum = 1;
@@ -37,20 +37,20 @@ namespace WindowsFormsRealEstateAdmin
             ofd.Filter = "JPG|*.jpg|PNG|*.png";
             ofd.Multiselect = false;
 
-            textBoxStreet.Text = apartment.Street;
-            comboBoxCity.SelectedItem = apartment.City;
-            textBoxPrice.Text = apartment.Price.ToString();
-            numericUpDownFloor.Value = apartment.Floor;
-            numericUpDownRooms.Value = apartment.Rooms;
-            textBoxDescription.Text = apartment.Description;
+            textBoxStreet.Text = realEstate.Street;
+            comboBoxCity.SelectedItem = realEstate.City;
+            textBoxPrice.Text = realEstate.Price.ToString();
+            numericUpDownFloor.Value = realEstate.Floor;
+            numericUpDownRooms.Value = realEstate.Rooms;
+            textBoxDescription.Text = realEstate.Description;
 
-            photoSlider = ImageManip.ByteArrToPhotoSlider(apartment.PhotoSlider);
+            photoSlider = ImageManip.ByteArrToPhotoSlider(realEstate.PhotoSlider);
             pictureBoxSlider.Image = ImageManip.ByteArrayToImage(photoSlider[photoNumber]);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            apartment = db.RealEstate.Single(x => x.Id == apartment.Id);
+            realEsate = db.RealEstate.Single(x => x.Id == realEsate.Id);
 
             if (String.IsNullOrWhiteSpace(textBoxStreet.Text) ||
                 String.IsNullOrWhiteSpace(textBoxPrice.Text) ||
@@ -61,19 +61,19 @@ namespace WindowsFormsRealEstateAdmin
             }
             else
             {
-                apartment.Street = textBoxStreet.Text;
-                apartment.Description = textBoxDescription.Text;
-                apartment.Rooms = Convert.ToInt32(numericUpDownRooms.Value);
-                apartment.Floor = Convert.ToInt32(numericUpDownFloor.Value);
+                realEsate.Street = textBoxStreet.Text;
+                realEsate.Description = textBoxDescription.Text;
+                realEsate.Rooms = Convert.ToInt32(numericUpDownRooms.Value);
+                realEsate.Floor = Convert.ToInt32(numericUpDownFloor.Value);
             }
 
             Cities city;
             Enum.TryParse(comboBoxCity.SelectedValue.ToString(), out city);
-            apartment.City = city;
+            realEsate.City = city;
 
             if (FormRealEstateCreator.CheckPrice(textBoxPrice.Text))
             {
-                apartment.Price = Convert.ToInt32(textBoxPrice.Text);
+                realEsate.Price = Convert.ToInt32(textBoxPrice.Text);
             }
             else
             {
@@ -99,7 +99,7 @@ namespace WindowsFormsRealEstateAdmin
                 return;
             }
 
-            apartment.PhotoSlider = ImageManip.PhotoSliderToByteArray(photoSlider);
+            realEsate.PhotoSlider = ImageManip.PhotoSliderToByteArray(photoSlider);
 
             db.SaveChanges();
 

@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace WindowsFormsExam
 {
-    public partial class FormSearchApartment : Form
+    public partial class FormSearchRealEstate : Form
     {
         AgencyContext db = new AgencyContext();
-        List<RealEstate> apartments;
+        List<RealEstate> realEstates;
         RealEstate realEstate;
         Client client;
         byte[][] photoSlider;
@@ -22,15 +22,15 @@ namespace WindowsFormsExam
         TcpClient tcpClient;
         NetworkStream stream;
 
-        public FormSearchApartment(Client client)
+        public FormSearchRealEstate(Client client)
         {
             InitializeComponent();
 
             this.client = client;
 
-            apartments = db.RealEstate.ToList();
+            realEstates = db.RealEstate.ToList();
 
-            listBoxRealEstate.DataSource = apartments;
+            listBoxRealEstate.DataSource = realEstates;
             listBoxRealEstate.DisplayMember = "Street";
             listBoxRealEstate.ValueMember = "Id";
 
@@ -160,7 +160,7 @@ namespace WindowsFormsExam
                     if (tmpRealEstate.Status == Status.Renting ||
                         tmpRealEstate.Status == Status.Waiting)
                     {
-                        MessageBox.Show("This apartment is taken", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("This real estate is taken", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -183,9 +183,6 @@ namespace WindowsFormsExam
             {
                 Client tmpClient = db.Clients.Single(x => x.Id == client.Id);
                 RealEstate tmpRealEstate = db.RealEstate.Single(x => x.Id == realEstate.Id);
-                tcpClient = new TcpClient();
-                tcpClient.Connect(IPAddress.Loopback, 8888);
-                stream = tcpClient.GetStream();
                 while (true)
                 {
                     byte[] buff = new byte[256];

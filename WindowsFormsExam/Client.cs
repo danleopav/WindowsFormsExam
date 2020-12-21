@@ -15,6 +15,6 @@ namespace WindowsFormsExam
         public string Email { get; set; }
         public DateTime DateOfBirth { get; set; } = DateTime.Today;
         public byte[] ProfilePhoto { get; set; }
-        public ICollection<RealEstate> Apartments { get; set; } = new List<RealEstate>();
+        public ICollection<RealEstate> RealEstate { get; set; } = new List<RealEstate>();
     }
 }

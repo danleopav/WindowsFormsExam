@@ -247,7 +247,7 @@ namespace WindowsFormsRealEstateAdmin
             this.buttonDeletePhoto.UseVisualStyleBackColor = true;
             this.buttonDeletePhoto.Click += new System.EventHandler(this.buttonDeletePhoto_Click);
             // 
-            // FormApartmentCreator
+            // FormRealEstateCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -273,8 +273,8 @@ namespace WindowsFormsRealEstateAdmin
             this.Controls.Add(this.textBoxStreet);
             this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormApartmentCreator";
-            this.Text = "Apartment creator";
+            this.Name = "FormRealEstateCreator";
+            this.Text = "Real Estate creator";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRooms)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlider)).EndInit();

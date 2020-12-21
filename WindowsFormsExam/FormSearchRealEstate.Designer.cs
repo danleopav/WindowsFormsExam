@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsExam
 {
-    partial class FormSearchApartment
+    partial class FormSearchRealEstate
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace WindowsFormsExam
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSearchApartment));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSearchRealEstate));
             this.listBoxRealEstate = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonPrev = new System.Windows.Forms.Button();

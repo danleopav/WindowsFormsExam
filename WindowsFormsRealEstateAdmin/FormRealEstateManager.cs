@@ -14,31 +14,31 @@ namespace WindowsFormsRealEstateAdmin
     public partial class FormRealEstateManager : Form
     {
         AgencyContext db = new AgencyContext();
-        List<RealEstate> apartments;
+        List<RealEstate> realEsate;
 
         public FormRealEstateManager()
         {
             InitializeComponent();
-            apartments = db.RealEstate.ToList();
+            realEsate = db.RealEstate.ToList();
 
-            listBoxRealEstate.DataSource = apartments;
+            listBoxRealEstate.DataSource = realEsate;
             listBoxRealEstate.DisplayMember = "Street";
             listBoxRealEstate.ValueMember = "Id";
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            FormRealEstateCreator apartmentManager = new FormRealEstateCreator();
-            apartmentManager.ShowDialog();
+            FormRealEstateCreator realEstateManager = new FormRealEstateCreator();
+            realEstateManager.ShowDialog();
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
-            RealEstate apartment = listBoxRealEstate.SelectedItem as RealEstate;
-            if (apartment != null)
+            RealEstate tmpRealEstate = listBoxRealEstate.SelectedItem as RealEstate;
+            if (tmpRealEstate != null)
             {
-                apartments.Remove(apartment);
-                db.RealEstate.Remove(apartment);
+                realEsate.Remove(tmpRealEstate);
+                db.RealEstate.Remove(tmpRealEstate);
                 db.SaveChanges();
 
                 listBoxRealEstate.DataSource = null;
@@ -50,10 +50,10 @@ namespace WindowsFormsRealEstateAdmin
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            RealEstate apartment = listBoxRealEstate.SelectedItem as RealEstate;
-            if (apartment != null)
+            RealEstate tmpRealEstate = listBoxRealEstate.SelectedItem as RealEstate;
+            if (tmpRealEstate != null)
             {
-                FormRealEstateEditor apartmentEditor = new FormRealEstateEditor(apartment);
+                FormRealEstateEditor apartmentEditor = new FormRealEstateEditor(tmpRealEstate);
                 apartmentEditor.ShowDialog();
             }
         }

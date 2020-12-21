@@ -11,7 +11,7 @@ namespace WindowsFormsRealEstateAdmin
     public partial class FormRealEstateCreator : Form
     {
         AgencyContext db = new AgencyContext();
-        RealEstate apartment;
+        RealEstate realEstate;
         Image photo = null;
         OpenFileDialog ofd = new OpenFileDialog();
         byte[][] photoSlider { get; set; } = new byte[5][];
@@ -22,7 +22,7 @@ namespace WindowsFormsRealEstateAdmin
         public FormRealEstateCreator()
         {
             InitializeComponent();
-            apartment = new RealEstate();
+            realEstate = new RealEstate();
 
             numericUpDownRooms.DecimalPlaces = 0;
             numericUpDownRooms.Minimum = 1;
@@ -54,19 +54,19 @@ namespace WindowsFormsRealEstateAdmin
             }
             else
             {
-                apartment.Street = textBoxStreet.Text;
-                apartment.Description = textBoxDescription.Text;
-                apartment.Rooms = Convert.ToInt32(numericUpDownRooms.Value);
-                apartment.Floor = Convert.ToInt32(numericUpDownFloor.Value);
+                realEstate.Street = textBoxStreet.Text;
+                realEstate.Description = textBoxDescription.Text;
+                realEstate.Rooms = Convert.ToInt32(numericUpDownRooms.Value);
+                realEstate.Floor = Convert.ToInt32(numericUpDownFloor.Value);
             }
 
             Cities city;
             Enum.TryParse(comboBoxCity.SelectedValue.ToString(), out city);
-            apartment.City = city;
+            realEstate.City = city;
 
             if (CheckPrice(textBoxPrice.Text))
             {
-                apartment.Price = Convert.ToInt32(textBoxPrice.Text);
+                realEstate.Price = Convert.ToInt32(textBoxPrice.Text);
             }   
             else
             {
@@ -91,11 +91,11 @@ namespace WindowsFormsRealEstateAdmin
                 return;
             }
 
-            apartment.PhotoSlider = ImageManip.PhotoSliderToByteArray(photoSlider);
+            realEstate.PhotoSlider = ImageManip.PhotoSliderToByteArray(photoSlider);
 
-            apartment.Client = db.Clients.FirstOrDefault();
+            realEstate.Client = db.Clients.FirstOrDefault();
 
-            db.RealEstate.Add(apartment);
+            db.RealEstate.Add(realEstate);
             db.SaveChanges();
 
             textBoxStreet.Text = String.Empty;

@@ -76,7 +76,7 @@ namespace WindowsFormsRealEstateAdmin
             this.groupBox2.Size = new System.Drawing.Size(431, 163);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Manage apartments";
+            this.groupBox2.Text = "Manage real estate";
             // 
             // tabControl
             // 
