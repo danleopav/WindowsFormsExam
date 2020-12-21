@@ -13,11 +13,11 @@ namespace WindowsFormsRealEstateAdmin
 {
     public partial class FormPanel : Form
     {
-        RealEstateContext db = new RealEstateContext();
+        AgencyContext db = new AgencyContext();
         List<Client> pendingClients = new List<Client>();
         int clientId;
         TcpListener server;
-        NetworkStream stream = null;
+        NetworkStream stream;
 
         public FormPanel()
         {
@@ -26,8 +26,8 @@ namespace WindowsFormsRealEstateAdmin
             server = new TcpListener(IPAddress.Loopback, 8888);
             server.Start();
 
-            Thread thread = new Thread(TcpListen);
-            thread.Start();
+            Thread threadListen = new Thread(TcpListen);
+            threadListen.Start();
         }
 
         void TcpListen()
@@ -35,12 +35,12 @@ namespace WindowsFormsRealEstateAdmin
             while (true)
             {
                 TcpClient tcpClient = server.AcceptTcpClient();
-
-                Thread thread = new Thread(() => TcpProcess(tcpClient));
-                thread.Start();
+                stream = tcpClient.GetStream();
+                Thread threadTcp = new Thread(() => TcpProcess(tcpClient));
+                threadTcp.Start();
             }
         }
-
+                                                                   
         void TcpProcess(TcpClient tcpClient)
         {
             try
@@ -67,8 +67,8 @@ namespace WindowsFormsRealEstateAdmin
                     pictureBoxBell.Image = bellImg; 
                 }
             }
-            catch (Exception exc)
-            { MessageBox.Show($"{exc.Message}"); }
+            catch (Exception)
+            { }
         }
 
         private void buttonManageClients_Click(object sender, EventArgs e)
@@ -79,18 +79,22 @@ namespace WindowsFormsRealEstateAdmin
 
         private void buttonManageApartments_Click(object sender, EventArgs e)
         {
-            FormApartmentManager apartmentAdministration = new FormApartmentManager();
+            FormRealEstateManager apartmentAdministration = new FormRealEstateManager();
             apartmentAdministration.ShowDialog();
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             pictureBoxBell.Image = Image.FromFile(@"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_bell.png");
+
+            listBoxPendingClients.DataSource = null;
+            listBoxPendingClients.DataSource = pendingClients;
+            listBoxPendingClients.DisplayMember = "FullName";
+            listBoxPendingClients.ValueMember = "Id";
         }
 
         private void buttonAccept_Click(object sender, EventArgs e)
         {
-
             if (listBoxPendingClients.SelectedItem != null)
             {
                 Client tmp = listBoxPendingClients.SelectedItem as Client;
@@ -104,14 +108,15 @@ namespace WindowsFormsRealEstateAdmin
                 listBoxPendingClients.DataSource = pendingClients;
                 listBoxPendingClients.DisplayMember = "FullName";
                 listBoxPendingClients.ValueMember = "Id";
-
+                           
                 db.SaveChanges();
+                //stream.Close();
+                //tcpClient.Close();
             }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            NetworkStream stream = null;
             if (listBoxPendingClients.SelectedItem != null)
             {
                 Client tmp = listBoxPendingClients.SelectedItem as Client;
@@ -127,6 +132,8 @@ namespace WindowsFormsRealEstateAdmin
                 listBoxPendingClients.ValueMember = "Id";
 
                 db.SaveChanges();
+                //stream.Close();
+                //tcpClient.Close();
             }
         }
     }

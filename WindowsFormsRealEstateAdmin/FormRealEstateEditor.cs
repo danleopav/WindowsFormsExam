@@ -6,9 +6,9 @@ using WindowsFormsExam;
 
 namespace WindowsFormsRealEstateAdmin
 {
-    public partial class FormApartmentEditor : Form
+    public partial class FormRealEstateEditor : Form
     {
-        RealEstateContext db = new RealEstateContext(); 
+        AgencyContext db = new AgencyContext(); 
         RealEstate apartment;
         OpenFileDialog ofd = new OpenFileDialog();
         Image photo;
@@ -17,7 +17,7 @@ namespace WindowsFormsRealEstateAdmin
         string noPhotoPath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
         int photoNumber = 0;
 
-        public FormApartmentEditor(RealEstate apartment)
+        public FormRealEstateEditor(RealEstate apartment)
         {
             InitializeComponent();
 
@@ -50,7 +50,7 @@ namespace WindowsFormsRealEstateAdmin
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            apartment = db.Apartments.Single(x => x.Id == apartment.Id);
+            apartment = db.RealEstate.Single(x => x.Id == apartment.Id);
 
             if (String.IsNullOrWhiteSpace(textBoxStreet.Text) ||
                 String.IsNullOrWhiteSpace(textBoxPrice.Text) ||
@@ -71,7 +71,7 @@ namespace WindowsFormsRealEstateAdmin
             Enum.TryParse(comboBoxCity.SelectedValue.ToString(), out city);
             apartment.City = city;
 
-            if (FormApartmentCreator.CheckPrice(textBoxPrice.Text))
+            if (FormRealEstateCreator.CheckPrice(textBoxPrice.Text))
             {
                 apartment.Price = Convert.ToInt32(textBoxPrice.Text);
             }

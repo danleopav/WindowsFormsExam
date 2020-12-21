@@ -11,15 +11,15 @@ using WindowsFormsExam;
 
 namespace WindowsFormsRealEstateAdmin
 {
-    public partial class FormApartmentManager : Form
+    public partial class FormRealEstateManager : Form
     {
-        RealEstateContext db = new RealEstateContext();
+        AgencyContext db = new AgencyContext();
         List<RealEstate> apartments;
 
-        public FormApartmentManager()
+        public FormRealEstateManager()
         {
             InitializeComponent();
-            apartments = db.Apartments.ToList();
+            apartments = db.RealEstate.ToList();
 
             listBoxRealEstate.DataSource = apartments;
             listBoxRealEstate.DisplayMember = "Street";
@@ -28,7 +28,7 @@ namespace WindowsFormsRealEstateAdmin
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            FormApartmentCreator apartmentManager = new FormApartmentCreator();
+            FormRealEstateCreator apartmentManager = new FormRealEstateCreator();
             apartmentManager.ShowDialog();
         }
 
@@ -38,11 +38,11 @@ namespace WindowsFormsRealEstateAdmin
             if (apartment != null)
             {
                 apartments.Remove(apartment);
-                db.Apartments.Remove(apartment);
+                db.RealEstate.Remove(apartment);
                 db.SaveChanges();
 
                 listBoxRealEstate.DataSource = null;
-                listBoxRealEstate.DataSource = db.Apartments.ToList();
+                listBoxRealEstate.DataSource = db.RealEstate.ToList();
                 listBoxRealEstate.DisplayMember = "Street";
                 listBoxRealEstate.ValueMember = "Id";
             }
@@ -53,7 +53,7 @@ namespace WindowsFormsRealEstateAdmin
             RealEstate apartment = listBoxRealEstate.SelectedItem as RealEstate;
             if (apartment != null)
             {
-                FormApartmentEditor apartmentEditor = new FormApartmentEditor(apartment);
+                FormRealEstateEditor apartmentEditor = new FormRealEstateEditor(apartment);
                 apartmentEditor.ShowDialog();
             }
         }

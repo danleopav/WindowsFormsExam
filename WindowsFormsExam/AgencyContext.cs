@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsExam
 {
-    public class RealEstateContext : DbContext
+    public class AgencyContext : DbContext
     {
-        public RealEstateContext() : base("DbConnection")
+        public AgencyContext() : base("DbConnection")
         { }
 
         public DbSet<Client> Clients { get; set; }
-        public DbSet<RealEstate> Apartments { get; set; }
+        public DbSet<RealEstate> RealEstate { get; set; }
 
-        ~RealEstateContext()
+        ~AgencyContext()
         {
             this.Dispose();
         }

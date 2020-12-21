@@ -8,7 +8,7 @@ namespace WindowsFormsRealEstateAdmin
 {
     public partial class FormClientManager : Form
     {
-        RealEstateContext db = new RealEstateContext();
+        AgencyContext db = new AgencyContext();
         List<Client> clients;
 
         public FormClientManager()
@@ -37,7 +37,6 @@ namespace WindowsFormsRealEstateAdmin
                 return;
             }
 
-
             if (selectedClient.Status != Status.Renting)
             {
                 Client tmp = db.Clients.Single(x => x.Id == selectedClient.Id);
@@ -50,17 +49,6 @@ namespace WindowsFormsRealEstateAdmin
                 MessageBox.Show("Evict this client before ban", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            listBoxClients.DataSource = null;
-            listBoxClients.DataSource = clients;
-            listBoxClients.DisplayMember = "FullName";
-            listBoxClients.ValueMember = "Id";
-        }
-
-        private void buttonRefresh_Click(object sender, EventArgs e)
-        {
-            db.Dispose();
-            db = new RealEstateContext();
 
             listBoxClients.DataSource = null;
             listBoxClients.DataSource = clients;

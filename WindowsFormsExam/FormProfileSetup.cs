@@ -12,7 +12,7 @@ namespace WindowsFormsExam
 {
     public partial class FormProfileSetup : Form
     {
-        RealEstateContext db = new RealEstateContext();
+        AgencyContext db = new AgencyContext();
         Client client;
         byte[] profilePhotoByteArr;
 

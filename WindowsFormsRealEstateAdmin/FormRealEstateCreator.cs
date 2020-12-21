@@ -8,9 +8,9 @@ using WindowsFormsExam;
 
 namespace WindowsFormsRealEstateAdmin
 {
-    public partial class FormApartmentCreator : Form
+    public partial class FormRealEstateCreator : Form
     {
-        RealEstateContext db = new RealEstateContext();
+        AgencyContext db = new AgencyContext();
         RealEstate apartment;
         Image photo = null;
         OpenFileDialog ofd = new OpenFileDialog();
@@ -19,7 +19,7 @@ namespace WindowsFormsRealEstateAdmin
         string noPhotoPath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
         int photoNumber = 0;
 
-        public FormApartmentCreator()
+        public FormRealEstateCreator()
         {
             InitializeComponent();
             apartment = new RealEstate();
@@ -95,7 +95,7 @@ namespace WindowsFormsRealEstateAdmin
 
             apartment.Client = db.Clients.FirstOrDefault();
 
-            db.Apartments.Add(apartment);
+            db.RealEstate.Add(apartment);
             db.SaveChanges();
 
             textBoxStreet.Text = String.Empty;

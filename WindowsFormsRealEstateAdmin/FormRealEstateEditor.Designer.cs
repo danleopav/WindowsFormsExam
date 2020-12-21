@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsRealEstateAdmin
 {
-    partial class FormApartmentEditor
+    partial class FormRealEstateEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace WindowsFormsRealEstateAdmin
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormApartmentEditor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRealEstateEditor));
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDownFloor = new System.Windows.Forms.NumericUpDown();
             this.labelPhotoNumber = new System.Windows.Forms.Label();

@@ -12,13 +12,15 @@ namespace WindowsFormsExam
 {
     public partial class FormSearchApartment : Form
     {
-        RealEstateContext db = new RealEstateContext();
+        AgencyContext db = new AgencyContext();
         List<RealEstate> apartments;
         RealEstate realEstate;
         Client client;
         byte[][] photoSlider;
         int photoNumber = 0;
         string noImagePath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
+        TcpClient tcpClient;
+        NetworkStream stream;
 
         public FormSearchApartment(Client client)
         {
@@ -26,11 +28,26 @@ namespace WindowsFormsExam
 
             this.client = client;
 
-            apartments = db.Apartments.ToList();
+            apartments = db.RealEstate.ToList();
 
             listBoxRealEstate.DataSource = apartments;
             listBoxRealEstate.DisplayMember = "Street";
             listBoxRealEstate.ValueMember = "Id";
+
+            if (realEstate.Status == Status.Waiting ||
+                realEstate.Status == Status.Renting)
+            {
+                labelAvailable.Text = "X";
+                labelAvailable.ForeColor = Color.Red;
+            }
+            else
+            {
+                labelAvailable.Text = "V";
+                labelAvailable.ForeColor = Color.Green;
+            }
+
+            Thread thread = new Thread(TcpRecive);
+            thread.Start();
         }
 
         private void listBoxRealEstate_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,6 +62,17 @@ namespace WindowsFormsExam
 
             photoNumber = 0;
             labelPhotoNumber.Text = "1/5";
+            if (realEstate.Status == Status.Waiting ||
+                realEstate.Status == Status.Renting)
+            {
+                labelAvailable.Text = "X";
+                labelAvailable.ForeColor = Color.Red;
+            }
+            else
+            {
+                labelAvailable.Text = "V";
+                labelAvailable.ForeColor = Color.Green;
+            }
 
             photoSlider = ImageManip.ByteArrToPhotoSlider(realEstate.PhotoSlider);
             pictureBoxSlider.Image = ImageManip.ByteArrayToImage(photoSlider[photoNumber]);
@@ -109,32 +137,31 @@ namespace WindowsFormsExam
                 MessageBox.Show("You can rent only one real estate", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Thread thread = new Thread(TcpClientProcess);
+            Thread thread = new Thread(TcpSend);
             thread.Start();
         }
 
-        void TcpClientProcess()
+        void TcpSend()
         {
             try
             {
                 Client tmpClient = db.Clients.Single(x => x.Id == client.Id);
-                TcpClient tcpClient = new TcpClient();
+                RealEstate tmpRealEstate = db.RealEstate.Single(x => x.Id == realEstate.Id);
+                tcpClient = new TcpClient();
                 tcpClient.Connect(IPAddress.Loopback, 8888);
-                NetworkStream stream = tcpClient.GetStream();
-
+                stream = tcpClient.GetStream();
                 while (true)
                 {
                     if (tmpClient.Status == Status.Renting ||
                         tmpClient.Status == Status.Waiting)
                     {
-                        //MessageBox.Show("You can rent only one real estate....", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (realEstate.Status == Status.Renting ||
-                        realEstate.Status == Status.Waiting)
+                    if (tmpRealEstate.Status == Status.Renting ||
+                        tmpRealEstate.Status == Status.Waiting)
                     {
                         MessageBox.Show("This apartment is taken", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; 
+                        return;
                     }
 
                     string clientId = tmpClient.Id.ToString();
@@ -142,9 +169,26 @@ namespace WindowsFormsExam
                     stream.Write(buff, 0, buff.Length);
 
                     tmpClient.Status = Status.Waiting;
-                    realEstate.Status = Status.Waiting;
+                    tmpRealEstate.Status = Status.Waiting;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            { }
+        }
 
-                    buff = new byte[256];
+        void TcpRecive()
+        {
+            try
+            {
+                Client tmpClient = db.Clients.Single(x => x.Id == client.Id);
+                RealEstate tmpRealEstate = db.RealEstate.Single(x => x.Id == realEstate.Id);
+                tcpClient = new TcpClient();
+                tcpClient.Connect(IPAddress.Loopback, 8888);
+                stream = tcpClient.GetStream();
+                while (true)
+                {
+                    byte[] buff = new byte[256];
                     StringBuilder builder = new StringBuilder();
                     do
                     {
@@ -156,19 +200,19 @@ namespace WindowsFormsExam
                     if (response == "accept")
                     {
                         tmpClient.Status = Status.Renting;
-                        realEstate.Client = tmpClient;
-                        realEstate.Status = Status.Renting;
+                        tmpRealEstate.Client = tmpClient;
+                        tmpRealEstate.Status = Status.Renting;
                     }
                     else
                     {
                         tmpClient.Status = Status.None;
-                        realEstate.Client = null;
-                        realEstate.Status = Status.None;
+                        tmpRealEstate.Client = null;
+                        tmpRealEstate.Status = Status.None;
                     }
                     db.SaveChanges();
                 }
             }
-            catch (Exception exc)
+            catch (Exception)
             { }
         }
     }

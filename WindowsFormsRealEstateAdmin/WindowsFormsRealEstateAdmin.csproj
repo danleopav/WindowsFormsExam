@@ -56,17 +56,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormApartmentManager.cs">
+    <Compile Include="FormRealEstateManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormApartmentManager.Designer.cs">
-      <DependentUpon>FormApartmentManager.cs</DependentUpon>
+    <Compile Include="FormRealEstateManager.Designer.cs">
+      <DependentUpon>FormRealEstateManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormApartmentCreator.cs">
+    <Compile Include="FormRealEstateCreator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormApartmentCreator.Designer.cs">
-      <DependentUpon>FormApartmentCreator.cs</DependentUpon>
+    <Compile Include="FormRealEstateCreator.Designer.cs">
+      <DependentUpon>FormRealEstateCreator.cs</DependentUpon>
     </Compile>
     <Compile Include="FormClientManager.cs">
       <SubType>Form</SubType>
@@ -74,11 +74,11 @@
     <Compile Include="FormClientManager.Designer.cs">
       <DependentUpon>FormClientManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormApartmentEditor.cs">
+    <Compile Include="FormRealEstateEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormApartmentEditor.Designer.cs">
-      <DependentUpon>FormApartmentEditor.cs</DependentUpon>
+    <Compile Include="FormRealEstateEditor.Designer.cs">
+      <DependentUpon>FormRealEstateEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPanel.cs">
       <SubType>Form</SubType>
@@ -88,17 +88,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormApartmentManager.resx">
-      <DependentUpon>FormApartmentManager.cs</DependentUpon>
+    <EmbeddedResource Include="FormRealEstateManager.resx">
+      <DependentUpon>FormRealEstateManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormApartmentCreator.resx">
-      <DependentUpon>FormApartmentCreator.cs</DependentUpon>
+    <EmbeddedResource Include="FormRealEstateCreator.resx">
+      <DependentUpon>FormRealEstateCreator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormClientManager.resx">
       <DependentUpon>FormClientManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormApartmentEditor.resx">
-      <DependentUpon>FormApartmentEditor.cs</DependentUpon>
+    <EmbeddedResource Include="FormRealEstateEditor.resx">
+      <DependentUpon>FormRealEstateEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPanel.resx">
       <DependentUpon>FormPanel.cs</DependentUpon>

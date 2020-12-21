@@ -12,7 +12,7 @@ namespace WindowsFormsExam
 {
     public partial class FormAccount : Form
     {
-        RealEstateContext db = new RealEstateContext();
+        AgencyContext db = new AgencyContext();
         bool isEyeOn = false;
 
         public FormAccount()
@@ -35,7 +35,7 @@ namespace WindowsFormsExam
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             db.Dispose();
-            db = new RealEstateContext();
+            db = new AgencyContext();
 
             if (!ClientAccountValidator.CheckUsername(textBoxUsername.Text, db.Clients))
             {

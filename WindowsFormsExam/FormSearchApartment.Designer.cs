@@ -49,6 +49,7 @@ namespace WindowsFormsExam
             this.label7 = new System.Windows.Forms.Label();
             this.labelPhotoNumber = new System.Windows.Forms.Label();
             this.pictureBoxSlider = new System.Windows.Forms.PictureBox();
+            this.labelAvailable = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -240,11 +241,22 @@ namespace WindowsFormsExam
             this.pictureBoxSlider.TabIndex = 16;
             this.pictureBoxSlider.TabStop = false;
             // 
+            // labelAvailable
+            // 
+            this.labelAvailable.AutoSize = true;
+            this.labelAvailable.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAvailable.Location = new System.Drawing.Point(910, 264);
+            this.labelAvailable.Name = "labelAvailable";
+            this.labelAvailable.Size = new System.Drawing.Size(23, 23);
+            this.labelAvailable.TabIndex = 33;
+            this.labelAvailable.Text = "X";
+            // 
             // FormSearchApartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 692);
+            this.Controls.Add(this.labelAvailable);
             this.Controls.Add(this.labelPhotoNumber);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.buttonSendRequest);
@@ -294,5 +306,6 @@ namespace WindowsFormsExam
         private System.Windows.Forms.Button buttonSendRequest;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelPhotoNumber;
+        private System.Windows.Forms.Label labelAvailable;
     }
 }
