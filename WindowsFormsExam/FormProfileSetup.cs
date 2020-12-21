@@ -89,7 +89,13 @@ namespace WindowsFormsExam
                 MessageBox.Show("Input correct e-mail address", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            
+            if (profilePhotoByteArr == null)
+            {
+                MessageBox.Show("Select profile photo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+          
             client.ProfilePhoto = profilePhotoByteArr;
 
             db.SaveChanges();

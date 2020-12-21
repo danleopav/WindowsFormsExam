@@ -9,7 +9,7 @@ namespace WindowsFormsRealEstateAdmin
     public partial class FormApartmentEditor : Form
     {
         RealEstateContext db = new RealEstateContext(); 
-        Apartment apartment;
+        RealEstate apartment;
         OpenFileDialog ofd = new OpenFileDialog();
         Image photo;
         byte[][] photoSlider { get; set; } = new byte[5][];
@@ -17,7 +17,7 @@ namespace WindowsFormsRealEstateAdmin
         string noPhotoPath = @"C:\Users\danle\source\repos\WindowsFormsExam\WindowsFormsRealEstateAdmin\img\no_photo.png";
         int photoNumber = 0;
 
-        public FormApartmentEditor(Apartment apartment)
+        public FormApartmentEditor(RealEstate apartment)
         {
             InitializeComponent();
 

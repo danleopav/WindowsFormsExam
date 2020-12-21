@@ -40,8 +40,9 @@ namespace WindowsFormsRealEstateAdmin
 
             if (selectedClient.Status != Status.Renting)
             {
-                db.Clients.Remove(selectedClient);
-                clients.Remove(selectedClient);
+                Client tmp = db.Clients.Single(x => x.Id == selectedClient.Id);
+                db.Clients.Remove(tmp);
+                clients.Remove(tmp);
                 db.SaveChanges();
             }
             else
@@ -87,7 +88,7 @@ namespace WindowsFormsRealEstateAdmin
                 Client tmp = clients.Single(x => x.Id == selectedClient.Id);
 
                 tmp.Status = Status.None;
-                tmp.Apartments.FirstOrDefault().IsRenting = false;
+                tmp.Status = Status.None;
 
                 db.SaveChanges();
 

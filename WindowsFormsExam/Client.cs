@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsFormsExam
 {
@@ -19,8 +14,7 @@ namespace WindowsFormsExam
         public Status Status { get; set; } 
         public string Email { get; set; }
         public DateTime DateOfBirth { get; set; } = DateTime.Today;
-        public bool RentingNow { get; set; } = false;
         public byte[] ProfilePhoto { get; set; }
-        public ICollection<Apartment> Apartments { get; set; } = new List<Apartment>();
+        public ICollection<RealEstate> Apartments { get; set; } = new List<RealEstate>();
     }
 }

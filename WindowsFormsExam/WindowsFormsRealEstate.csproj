@@ -56,7 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Apartment.cs" />
+    <Compile Include="RealEstate.cs" />
     <Compile Include="Cities.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientAccountValidator.cs" />
@@ -156,19 +156,10 @@
     <None Include="img\settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\no_img.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="img\no_photo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="img\add_photo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\iconfinder_icons_search_1564527.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\iconfinder_Search_4781817.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="img\find.png" />

@@ -11,7 +11,7 @@ namespace WindowsFormsRealEstateAdmin
     public partial class FormApartmentCreator : Form
     {
         RealEstateContext db = new RealEstateContext();
-        Apartment apartment;
+        RealEstate apartment;
         Image photo = null;
         OpenFileDialog ofd = new OpenFileDialog();
         byte[][] photoSlider { get; set; } = new byte[5][];
@@ -22,7 +22,7 @@ namespace WindowsFormsRealEstateAdmin
         public FormApartmentCreator()
         {
             InitializeComponent();
-            apartment = new Apartment();
+            apartment = new RealEstate();
 
             numericUpDownRooms.DecimalPlaces = 0;
             numericUpDownRooms.Minimum = 1;

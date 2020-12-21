@@ -32,20 +32,15 @@ namespace WindowsFormsExam
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClient));
             this.labelWelcome = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelPrice = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelTime = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labelRentingNow = new System.Windows.Forms.Label();
             this.buttonFind = new System.Windows.Forms.Button();
             this.pictureBoxProfilePhoto = new System.Windows.Forms.PictureBox();
             this.buttonSettings = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePhoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,121 +58,61 @@ namespace WindowsFormsExam
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(258, 138);
+            this.label2.Location = new System.Drawing.Point(259, 185);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(170, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "Next payment:";
             // 
-            // label3
+            // labelPrice
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(437, 138);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 25);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "$0";
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrice.Location = new System.Drawing.Point(438, 185);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(38, 25);
+            this.labelPrice.TabIndex = 5;
+            this.labelPrice.Text = "$0";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(258, 173);
+            this.label4.Location = new System.Drawing.Point(259, 248);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(167, 25);
+            this.label4.Size = new System.Drawing.Size(156, 25);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Payment date:";
+            this.label4.Text = "Renting time:";
             // 
-            // label5
+            // labelTime
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(437, 173);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 25);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "0.0.0";
+            this.labelTime.AutoSize = true;
+            this.labelTime.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTime.Location = new System.Drawing.Point(438, 248);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(67, 25);
+            this.labelTime.TabIndex = 7;
+            this.labelTime.Text = "0.0.0";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(258, 102);
+            this.label6.Location = new System.Drawing.Point(259, 124);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(152, 25);
             this.label6.TabIndex = 8;
             this.label6.Text = "Renting now:";
             // 
-            // label7
+            // labelRentingNow
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(437, 102);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 25);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "No";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(437, 208);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 25);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "No";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(258, 208);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 25);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "More info:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(437, 242);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 25);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "No";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(258, 242);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(121, 25);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "More info:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(437, 277);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 25);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "No";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(258, 277);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(121, 25);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "More info:";
+            this.labelRentingNow.AutoSize = true;
+            this.labelRentingNow.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRentingNow.Location = new System.Drawing.Point(438, 124);
+            this.labelRentingNow.Name = "labelRentingNow";
+            this.labelRentingNow.Size = new System.Drawing.Size(41, 25);
+            this.labelRentingNow.TabIndex = 9;
+            this.labelRentingNow.Text = "No";
             // 
             // buttonFind
             // 
@@ -208,24 +143,29 @@ namespace WindowsFormsExam
             this.buttonSettings.UseVisualStyleBackColor = true;
             this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(12, 331);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(546, 53);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Stop renting";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 333);
+            this.ClientSize = new System.Drawing.Size(570, 396);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonFind);
             this.Controls.Add(this.pictureBoxProfilePhoto);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.labelRentingNow);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelTime);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.labelWelcome);
@@ -243,18 +183,13 @@ namespace WindowsFormsExam
         private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.Label labelWelcome;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelRentingNow;
         private System.Windows.Forms.PictureBox pictureBoxProfilePhoto;
         private System.Windows.Forms.Button buttonFind;
+        private System.Windows.Forms.Button button1;
     }
 }

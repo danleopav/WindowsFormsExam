@@ -21,6 +21,15 @@ namespace WindowsFormsExam
             client = c;
             labelWelcome.Text = "Welcome, " + client.FirstName;
             pictureBoxProfilePhoto.Image = ImageManip.ByteArrayToImage(client.ProfilePhoto);
+            if (client.Status == Status.Renting)
+            {
+                labelRentingNow.Text = "Yes";
+            }
+            else
+            {
+                labelRentingNow.Text = "No";
+                //labelPrice.Text = $"$0";
+            }
         }
 
         private void buttonFind_Click(object sender, EventArgs e)

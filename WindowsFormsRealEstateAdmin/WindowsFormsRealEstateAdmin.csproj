@@ -158,7 +158,7 @@
     <None Include="img\delete_photo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\refresh.png" />
+    <None Include="img\no_bell.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

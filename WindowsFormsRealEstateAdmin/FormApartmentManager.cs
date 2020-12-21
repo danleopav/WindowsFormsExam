@@ -14,7 +14,7 @@ namespace WindowsFormsRealEstateAdmin
     public partial class FormApartmentManager : Form
     {
         RealEstateContext db = new RealEstateContext();
-        List<Apartment> apartments;
+        List<RealEstate> apartments;
 
         public FormApartmentManager()
         {
@@ -34,7 +34,7 @@ namespace WindowsFormsRealEstateAdmin
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
-            Apartment apartment = listBoxRealEstate.SelectedItem as Apartment;
+            RealEstate apartment = listBoxRealEstate.SelectedItem as RealEstate;
             if (apartment != null)
             {
                 apartments.Remove(apartment);
@@ -50,7 +50,7 @@ namespace WindowsFormsRealEstateAdmin
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            Apartment apartment = listBoxRealEstate.SelectedItem as Apartment;
+            RealEstate apartment = listBoxRealEstate.SelectedItem as RealEstate;
             if (apartment != null)
             {
                 FormApartmentEditor apartmentEditor = new FormApartmentEditor(apartment);
