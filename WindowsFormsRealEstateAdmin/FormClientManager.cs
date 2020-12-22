@@ -22,40 +22,6 @@ namespace WindowsFormsRealEstateAdmin
             listBoxClients.ValueMember = "Id";
         }
 
-        private void buttonBan_Click(object sender, EventArgs e)
-        {
-            Client selectedClient = listBoxClients.SelectedItem as Client;
-
-            if (selectedClient == null)
-            {
-                return;
-            }
-
-            if (selectedClient.Username == "admin")
-            {
-                MessageBox.Show("You cant ban admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (selectedClient.Status != Status.Renting)
-            {
-                Client tmp = db.Clients.Single(x => x.Id == selectedClient.Id);
-                db.Clients.Remove(tmp);
-                clients.Remove(tmp);
-                db.SaveChanges();
-            }
-            else
-            {
-                MessageBox.Show("Evict this client before ban", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            listBoxClients.DataSource = null;
-            listBoxClients.DataSource = clients;
-            listBoxClients.DisplayMember = "FullName";
-            listBoxClients.ValueMember = "Id";
-        }
-
         private void buttonEvict_Click(object sender, EventArgs e)
         {
             Client selectedClient = listBoxClients.SelectedItem as Client;
@@ -71,19 +37,16 @@ namespace WindowsFormsRealEstateAdmin
                 return;
             }
 
-            if (selectedClient.Status == Status.Renting)
+            if (selectedClient.Status == Status.Renting ||
+                selectedClient.Status == Status.Waiting)
             {
-                Client tmp = clients.Single(x => x.Id == selectedClient.Id);
-
+                Client client = db.Clients.Single(x => x.Id == selectedClient.Id);
+                client.Status = Status.None;
+                RealEstate tmp = db.RealEstate.Single(x => x.Id == selectedClient.Id);
+                int realEstateClientId = tmp.Id;
+                tmp = db.RealEstate.Single(x => x.Id == realEstateClientId);
+                tmp.Client = db.Clients.FirstOrDefault();
                 tmp.Status = Status.None;
-                tmp.Status = Status.None;
-
-                db.SaveChanges();
-
-                listBoxClients.DataSource = null;
-                listBoxClients.DataSource = clients;
-                listBoxClients.DisplayMember = "FullName";
-                listBoxClients.ValueMember = "Id";
             }
             else
             {

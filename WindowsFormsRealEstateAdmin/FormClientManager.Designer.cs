@@ -30,24 +30,11 @@ namespace WindowsFormsRealEstateAdmin
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientManager));
-            this.buttonBan = new System.Windows.Forms.Button();
             this.listBoxClients = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonEvict = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // buttonBan
-            // 
-            this.buttonBan.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBan.ForeColor = System.Drawing.Color.IndianRed;
-            this.buttonBan.Location = new System.Drawing.Point(15, 494);
-            this.buttonBan.Name = "buttonBan";
-            this.buttonBan.Size = new System.Drawing.Size(457, 34);
-            this.buttonBan.TabIndex = 6;
-            this.buttonBan.Text = "Ban";
-            this.buttonBan.UseVisualStyleBackColor = true;
-            this.buttonBan.Click += new System.EventHandler(this.buttonBan_Click);
             // 
             // listBoxClients
             // 
@@ -83,7 +70,7 @@ namespace WindowsFormsRealEstateAdmin
             // 
             this.buttonEvict.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEvict.ForeColor = System.Drawing.Color.IndianRed;
-            this.buttonEvict.Location = new System.Drawing.Point(15, 534);
+            this.buttonEvict.Location = new System.Drawing.Point(15, 495);
             this.buttonEvict.Name = "buttonEvict";
             this.buttonEvict.Size = new System.Drawing.Size(457, 34);
             this.buttonEvict.TabIndex = 13;
@@ -95,10 +82,9 @@ namespace WindowsFormsRealEstateAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 577);
+            this.ClientSize = new System.Drawing.Size(486, 538);
             this.Controls.Add(this.buttonEvict);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.buttonBan);
             this.Controls.Add(this.listBoxClients);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -110,8 +96,6 @@ namespace WindowsFormsRealEstateAdmin
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonBan;
         private System.Windows.Forms.ListBox listBoxClients;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
