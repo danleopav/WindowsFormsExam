@@ -162,11 +162,12 @@ namespace WindowsFormsRealEstateAdmin
             // 
             // listBoxPendingClients
             // 
+            this.listBoxPendingClients.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxPendingClients.FormattingEnabled = true;
-            this.listBoxPendingClients.ItemHeight = 18;
+            this.listBoxPendingClients.ItemHeight = 25;
             this.listBoxPendingClients.Location = new System.Drawing.Point(6, 6);
             this.listBoxPendingClients.Name = "listBoxPendingClients";
-            this.listBoxPendingClients.Size = new System.Drawing.Size(456, 310);
+            this.listBoxPendingClients.Size = new System.Drawing.Size(456, 304);
             this.listBoxPendingClients.TabIndex = 0;
             // 
             // pictureBoxBell

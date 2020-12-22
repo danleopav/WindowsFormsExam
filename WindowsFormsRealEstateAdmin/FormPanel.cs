@@ -15,7 +15,10 @@ namespace WindowsFormsRealEstateAdmin
     {
         AgencyContext db = new AgencyContext();
         List<Client> pendingClients = new List<Client>();
+        int realEstateId;
         int clientId;
+        RealEstate tmpRealEstate;
+        Client tmpClient;
         TcpListener server;
         NetworkStream stream;
 
@@ -55,9 +58,12 @@ namespace WindowsFormsRealEstateAdmin
                         int size = stream.Read(buff, 0, buff.Length);
                         builder.Append(Encoding.UTF8.GetString(buff, 0, size));
                     } while (stream.DataAvailable);
-                    clientId = Convert.ToInt32(builder.ToString());
-                    Client tmp = db.Clients.Single(x => x.Id == clientId);
-                    pendingClients.Add(tmp);
+                    string[] ids = builder.ToString().Split('.');
+                    realEstateId = Convert.ToInt32(ids[0]);
+                    clientId = Convert.ToInt32(ids[1]);
+                    tmpRealEstate = db.RealEstate.Single(x => x.Id == realEstateId);
+                    tmpClient = db.Clients.Single(x => x.Id == clientId);
+                    pendingClients.Add(tmpClient);
                    
                     listBoxPendingClients.DataSource = null;
                     listBoxPendingClients.DataSource = pendingClients;
@@ -97,21 +103,17 @@ namespace WindowsFormsRealEstateAdmin
         {
             if (listBoxPendingClients.SelectedItem != null)
             {
-                Client tmp = listBoxPendingClients.SelectedItem as Client;
-                tmp = db.Clients.Single(x => x.Id == tmp.Id);
+                tmpClient.Status = Status.Renting;
+                tmpRealEstate.Client = tmpClient;
+                tmpRealEstate.Status = Status.Renting;
 
-                byte[] buff = Encoding.UTF8.GetBytes("accept");
-                stream.Write(buff, 0, buff.Length);
-
-                pendingClients.Remove(tmp);
+                listBoxPendingClients.Items.Remove(tmpClient);
                 listBoxPendingClients.DataSource = null;
                 listBoxPendingClients.DataSource = pendingClients;
                 listBoxPendingClients.DisplayMember = "FullName";
                 listBoxPendingClients.ValueMember = "Id";
-                           
+
                 db.SaveChanges();
-                //stream.Close();
-                //tcpClient.Close();
             }
         }
 
@@ -119,21 +121,17 @@ namespace WindowsFormsRealEstateAdmin
         {
             if (listBoxPendingClients.SelectedItem != null)
             {
-                Client tmp = listBoxPendingClients.SelectedItem as Client;
-                tmp = db.Clients.Single(x => x.Id == tmp.Id);
+                tmpClient.Status = Status.None;
+                tmpRealEstate.Client = db.Clients.FirstOrDefault();
+                tmpRealEstate.Status = Status.None;
 
-                byte[] buff = Encoding.UTF8.GetBytes("cancel");
-                stream.Write(buff, 0, buff.Length);
-
-                pendingClients.Remove(tmp);
+                listBoxPendingClients.Items.Remove(tmpClient);
                 listBoxPendingClients.DataSource = null;
                 listBoxPendingClients.DataSource = pendingClients;
                 listBoxPendingClients.DisplayMember = "FullName";
                 listBoxPendingClients.ValueMember = "Id";
 
                 db.SaveChanges();
-                //stream.Close();
-                //tcpClient.Close();
             }
         }
     }

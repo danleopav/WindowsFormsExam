@@ -46,8 +46,8 @@ namespace WindowsFormsExam
                 labelAvailable.ForeColor = Color.Green;
             }
 
-            Thread thread = new Thread(TcpRecive);
-            thread.Start();
+/*            Thread thread = new Thread(TcpRecive);
+            thread.Start();*/
         }
 
         private void listBoxRealEstate_SelectedIndexChanged(object sender, EventArgs e)
@@ -137,16 +137,17 @@ namespace WindowsFormsExam
                 MessageBox.Show("You can rent only one real estate", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Thread thread = new Thread(TcpSend);
+            Thread thread = new Thread(TcpProcess);
             thread.Start();
         }
 
-        void TcpSend()
+        void TcpProcess()
         {
             try
             {
                 Client tmpClient = db.Clients.Single(x => x.Id == client.Id);
                 RealEstate tmpRealEstate = db.RealEstate.Single(x => x.Id == realEstate.Id);
+
                 tcpClient = new TcpClient();
                 tcpClient.Connect(IPAddress.Loopback, 8888);
                 stream = tcpClient.GetStream();
@@ -164,48 +165,16 @@ namespace WindowsFormsExam
                         return;
                     }
 
+                    string realEstateId = tmpRealEstate.Id.ToString();
                     string clientId = tmpClient.Id.ToString();
-                    byte[] buff = Encoding.UTF8.GetBytes(clientId);
+                    string ids = realEstateId + "." + clientId;
+                    byte[] buff = Encoding.UTF8.GetBytes(ids);
+
                     stream.Write(buff, 0, buff.Length);
 
                     tmpClient.Status = Status.Waiting;
                     tmpRealEstate.Status = Status.Waiting;
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception)
-            { }
-        }
 
-        void TcpRecive()
-        {
-            try
-            {
-                Client tmpClient = db.Clients.Single(x => x.Id == client.Id);
-                RealEstate tmpRealEstate = db.RealEstate.Single(x => x.Id == realEstate.Id);
-                while (true)
-                {
-                    byte[] buff = new byte[256];
-                    StringBuilder builder = new StringBuilder();
-                    do
-                    {
-                        int size = stream.Read(buff, 0, buff.Length);
-                        builder.Append(Encoding.UTF8.GetString(buff, 0, size));
-                    } while (stream.DataAvailable);
-
-                    string response = builder.ToString();
-                    if (response == "accept")
-                    {
-                        tmpClient.Status = Status.Renting;
-                        tmpRealEstate.Client = tmpClient;
-                        tmpRealEstate.Status = Status.Renting;
-                    }
-                    else
-                    {
-                        tmpClient.Status = Status.None;
-                        tmpRealEstate.Client = null;
-                        tmpRealEstate.Status = Status.None;
-                    }
                     db.SaveChanges();
                 }
             }
